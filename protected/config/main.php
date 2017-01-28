@@ -145,7 +145,7 @@ return [
             'class' => 'yupe\components\HttpRequest',
             'enableCsrfValidation' => true,
             'csrfCookie' => ['httpOnly' => true],
-            'csrfTokenName' => 'YUPE_TOKEN',
+            'csrfTokenName' => 'OQILACMS_TOKEN',
             'enableCookieValidation' => true
         ],
         'session' => ['cookieParams' => ['httponly' => true]],

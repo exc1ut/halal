@@ -28,6 +28,12 @@ define('YII_DEBUG', file_exists(__DIR__ . '/../DEBUG'));
 defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL', 3);
 define('ROOT_DIR', realpath(__DIR__.'/../'));
 
+if(YII_DEBUG)
+{
+    ini_set('display_errors', true);
+    error_reporting(-1);
+}
+
 require __DIR__ . '/../vendor/yiisoft/yii/framework/yii.php';
 
 $base = require __DIR__ . '/../protected/config/main.php';
