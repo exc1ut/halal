@@ -1,1 +1,1 @@
-<?= $output;
+<?=$block->getContent();

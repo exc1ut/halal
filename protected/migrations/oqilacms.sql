@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 28, 2017 at 02:18 PM
--- Server version: 5.5.53-0+deb8u1
+-- Generation Time: Feb 21, 2017 at 05:15 PM
+-- Server version: 5.5.54-0+deb8u1
 -- PHP Version: 5.6.29-0+deb8u1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -1096,14 +1096,14 @@ CREATE TABLE IF NOT EXISTS `oqilacms_user_tokens` (
   `update_time` datetime DEFAULT NULL,
   `ip` varchar(255) DEFAULT NULL,
   `expire_time` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oqilacms_user_tokens`
 --
 
 INSERT INTO `oqilacms_user_tokens` (`id`, `user_id`, `token`, `type`, `status`, `create_time`, `update_time`, `ip`, `expire_time`) VALUES
-(2, 1, '4XYsC9Q1MrKgUUKfEC8BxebsMSvQdheg', 4, 0, '2016-12-04 13:19:19', '2016-12-04 13:19:19', '127.0.0.1', '2016-12-11 13:19:19');
+(3, 1, 'RFVgLQAkW_nNumEF4TMqHcoPTW~A_2AC', 4, 0, '2017-01-30 13:59:17', '2017-01-30 13:59:17', '127.0.0.1', '2017-02-06 13:59:17');
 
 -- --------------------------------------------------------
 
@@ -1139,7 +1139,7 @@ CREATE TABLE IF NOT EXISTS `oqilacms_user_user` (
 --
 
 INSERT INTO `oqilacms_user_user` (`id`, `update_time`, `first_name`, `middle_name`, `last_name`, `nick_name`, `email`, `gender`, `birth_date`, `site`, `about`, `location`, `status`, `access_level`, `visit_time`, `create_time`, `avatar`, `hash`, `email_confirm`, `phone`) VALUES
-(1, '2016-12-03 23:08:49', '', '', '', 'admin', 'admin@mail.com', 0, NULL, '', '', '', 1, 1, '2016-12-04 13:19:18', '2016-12-03 23:08:49', NULL, '$2y$13$yRMf.r/kqZ41bMpOWtdsmO6uA0WadZTGcZc8XeTfuFi5Gb3WAWyau', 1, NULL);
+(1, '2016-12-03 23:08:49', '', '', '', 'admin', 'admin@mail.com', 0, NULL, '', '', '', 1, 1, '2017-01-30 13:59:17', '2016-12-03 23:08:49', NULL, '$2y$13$yRMf.r/kqZ41bMpOWtdsmO6uA0WadZTGcZc8XeTfuFi5Gb3WAWyau', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -1231,7 +1231,7 @@ INSERT INTO `oqilacms_yupe_settings` (`id`, `module_id`, `param_name`, `param_va
 (2, 'yupe', 'siteName', 'OqilaCMS', '2016-12-03 23:08:59', '2016-12-04 16:28:51', 1, 1),
 (3, 'yupe', 'siteKeyWords', 'oqilacms, cms', '2016-12-03 23:08:59', '2016-12-04 16:28:51', 1, 1),
 (4, 'yupe', 'email', 'admin@mail.com', '2016-12-03 23:08:59', '2016-12-03 23:08:59', 1, 1),
-(5, 'yupe', 'theme', 'shop', '2016-12-03 23:08:59', '2016-12-03 23:08:59', 1, 1),
+(5, 'yupe', 'theme', 'default', '2016-12-03 23:08:59', '2017-01-30 14:03:04', 1, 1),
 (6, 'yupe', 'backendTheme', '', '2016-12-03 23:08:59', '2016-12-03 23:08:59', 1, 1),
 (7, 'yupe', 'defaultLanguage', 'en', '2016-12-03 23:08:59', '2016-12-03 23:08:59', 1, 1),
 (8, 'yupe', 'defaultBackendLanguage', 'en', '2016-12-03 23:08:59', '2016-12-03 23:08:59', 1, 1),
@@ -1824,7 +1824,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `oqilacms_user_tokens`
 --
 ALTER TABLE `oqilacms_user_tokens`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `oqilacms_user_user`
 --

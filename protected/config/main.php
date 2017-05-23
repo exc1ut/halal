@@ -21,13 +21,13 @@
 Yii::setPathOfAlias('application', __DIR__ . '/../');
 Yii::setPathOfAlias('public', dirname($_SERVER['SCRIPT_FILENAME']));
 Yii::setPathOfAlias('yupe', __DIR__ . '/../modules/yupe/');
-Yii::setPathOfAlias('vendor', __DIR__ . '/../../vendor/');
+Yii::setPathOfAlias('vendor', __DIR__ . '/../../../vendor/');
 Yii::setPathOfAlias('themes', __DIR__ . '/../../themes/');
 
 return [
     'basePath' => __DIR__ . '/..',
     // Default controller
-    'defaultController' => 'site',
+    'defaultController' => 'site/index',
     // Application name
     'name' => 'OqilaCMS',
     // Default language
@@ -35,7 +35,7 @@ return [
     'sourceLanguage' => 'en',
     // Default theme
     'theme' => 'default',
-    'layout' => 'yupe',
+    'layout' => 'main',
     'charset' => 'UTF-8',
     'controllerNamespace' => 'application\controllers',
     'aliases' => [

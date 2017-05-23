@@ -34,13 +34,13 @@ if(YII_DEBUG)
     error_reporting(-1);
 }
 
-require __DIR__ . '/../vendor/yiisoft/yii/framework/yii.php';
+require __DIR__ . '/../../vendor/yiisoft/yii/framework/yii.php';
 
 $base = require __DIR__ . '/../protected/config/main.php';
 
 $confManager = new yupe\components\ConfigManager();
 $confManager->sentEnv(\yupe\components\ConfigManager::ENV_WEB);
 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../../vendor/autoload.php';
 
 Yii::createWebApplication($confManager->merge($base))->run();

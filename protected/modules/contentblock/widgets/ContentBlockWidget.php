@@ -52,37 +52,31 @@ class ContentBlockWidget extends yupe\widgets\YWidget
      */
     public function run()
     {
-        $cacheName = "ContentBlock{$this->code}";
+       $cacheName = "ContentBlock{$this->code}";
 
-        $output = Yii::app()->getCache()->get($cacheName);
+        $block = Yii::app()->getCache()->get($cacheName);
 
-        if (false === $output) {
-
+        if($block === false)
+        {
             $block = ContentBlock::model()->findByAttributes(['code' => $this->code]);
 
-            if (null === $block) {
-                if (false === $this->silent) {
-                    throw new CException(
-                        Yii::t(
-                            'ContentBlockModule.contentblock',
-                            'Content block "{code}" was not found !',
-                            [
-                                '{code}' => $this->code,
-                            ]
-                        )
-                    );
+            if(null === $block)
+            {
+                if($this->silent === false)
+                {
+                    throw new CException(Yii::t('ContentBlockModule.contentblock', 'Content block "{code}" was not found !', ['{code}' => $this->code]));
                 }
-
-                $output = '';
-
-            } else {
-
-                $output = $block->status == ContentBlock::STATUS_ACTIVE ? $block->getContent() : '';
+                $block = new ContentBlock();
+            }
+            else
+            {
+                if($block->status != ContentBlock::STATUS_ACTIVE)
+                    $block = new ContentBlock();
             }
 
-            Yii::app()->getCache()->set($cacheName, $output);
+            Yii::app()->getCache()->set($cacheName, $block);
         }
 
-        $this->render($this->view, ['output' => $output]);
+        $this->render($this->view, ['block' => $block]);
     }
 }

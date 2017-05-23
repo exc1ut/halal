@@ -37,7 +37,7 @@
 </head>
 
 <body>
-
+This is header
 <?php \yupe\components\TemplateEvent::fire(DefautThemeEvents::BODY_START);?>
 
 <?php if (Yii::app()->hasModule('menu')): ?>
@@ -58,17 +58,19 @@
         <?= $content; ?>
     </div>
     <!-- footer -->
-    <?php $this->renderPartial('//layouts/_footer'); ?>
+    <div class="row">
+        <div class="col-lg-12">
+            <p>This is footer</p>
+            <ul class="nav nav-pills nav-stacked">
+
+                <li>© 2016 - <?= date('Y'); ?></li>
+            </ul>
+        </div>
+    </div>
     <!-- footer end -->
 </div>
 <div class='notifications top-right' id="notifications"></div>
 <!-- container end -->
-<?php if (Yii::app()->hasModule('contentblock')): ?>
-    <?php $this->widget(
-        "application.modules.contentblock.widgets.ContentBlockWidget",
-        ["code" => "STAT", "silent" => true]
-    ); ?>
-<?php endif; ?>
 
 <?php \yupe\components\TemplateEvent::fire(DefautThemeEvents::BODY_END);?>
 

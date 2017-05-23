@@ -1,4 +1,7 @@
 {
+    "config": {
+        "vendor-dir": "../vendor"
+    },
     "name": "yupe/yupe",
     "description": "Yupe is simple and lightweight CMF for web-development, built on top of Yii 1.x",
     "keywords": ["yupe", "yii", "web", "cms", "cmf", "shop", "ecommerce"],

@@ -157,7 +157,7 @@
             <div class="grid">
                 <div class="footer__wrap">
                     <div class="footer__group">
-                        <div class="footer__item">&copy; Yupe! <?= date('Y') ?></div>
+                        <div class="footer__item">&copy; <?=Yii::app()->name?> <?= date('Y') ?></div>
                         <div class="footer__item footer__item_mute">Все права защищены.</div>
                     </div>
                     <div class="footer__group">

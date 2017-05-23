@@ -11,7 +11,7 @@
  */
 
 return [
-    'Links'                                                                             => '',
+    'Links' => '',
     'Twitter'                                                                           => '',
     'Vk.com'                                                                            => '',
     'Facebook'                                                                          => '',
