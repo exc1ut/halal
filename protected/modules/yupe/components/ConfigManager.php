@@ -158,7 +158,7 @@ class ConfigManager extends \CApplicationComponent
      */
     public function getSettings()
     {
-        if ($this->isCached()) {
+        if ($this->isCached() && !YII_DEBUG) {
             $settings = $this->cachedSettings();
         } else {
             $settings = $this->prepareSettings();
