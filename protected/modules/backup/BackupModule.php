@@ -261,7 +261,9 @@ class BackupModule  extends yupe\components\WebModule
             '.git' . DIRECTORY_SEPARATOR,
             'public' . DIRECTORY_SEPARATOR . 'assets',
             'protected' . DIRECTORY_SEPARATOR . 'runtime',
-            'protected' . DIRECTORY_SEPARATOR . 'backup'
+            'protected' . DIRECTORY_SEPARATOR . 'backup',
+            'nbproject',
+            'tests'
        ];
     }
     
@@ -319,17 +321,17 @@ class BackupModule  extends yupe\components\WebModule
             }
         }
         $zip->close();
-        $this->removeTemp()
+        $this->removeTemp();
     }
     
     private function removeTemp()
     {
         $dir = $this->tempFolder;
         $files = array_diff(scandir($dir), array('.','..')); 
-            foreach ($files as $file) { 
-                (is_dir("$dir/$file")) ? delTree("$dir/$file") : unlink("$dir/$file"); 
-            } 
-            return rmdir($dir); 
+        foreach ($files as $file) { 
+            (is_dir("$dir/$file")) ? delTree("$dir/$file") : unlink("$dir/$file"); 
+        } 
+        return rmdir($dir); 
     }
 
         private function createDbDump($host, $user, $pass, $name, $tables=false, $backup_name=false) 

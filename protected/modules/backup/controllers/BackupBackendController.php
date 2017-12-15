@@ -21,5 +21,6 @@ class BackupBackendController extends \yupe\components\controllers\BackControlle
     
     public function actionCreate() {
         $this->getModule()->createBackup();
+        $this->redirect('backup/backupBackend/index');
     }
 }
