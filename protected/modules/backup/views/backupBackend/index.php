@@ -24,3 +24,22 @@ $this->menu = $this->getModule()->getNavigation();
         <small><?php echo Yii::t('BackupModule.backup', 'Index'); ?></small>
     </h1>
 </div>
+
+<?php
+ $this->widget(
+    'zii.widgets.grid.CGridView',
+    [
+        'id'                => 'cargo-grid',
+//        'type'              => 'striped condensed',
+        'dataProvider'      => $model,
+//        'actionsButtons'    => false,
+//        'bulkActions'       => [''],
+//        'hideBulkActions'   => true,
+//        'summaryText'       => false,
+        'columns'           => [
+            'id',
+            'create_time',
+            'size'
+        ],
+    ]
+); ?>

@@ -13,7 +13,13 @@ class BackupBackendController extends \yupe\components\controllers\BackControlle
 {
     public function actionIndex()
     {
-//        echo Yii::getPathOfAlias('application') . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "backup";
-        $this->render('index');
+        $data = Yii::app()->getModule('backup')->getData();
+        
+        $model = new CArrayDataProvider($data, []);
+        $this->render('index', ['model' => $model]);
+    }
+    
+    public function actionCreate() {
+        $this->getModule()->createBackup();
     }
 }
