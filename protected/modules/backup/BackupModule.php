@@ -10,7 +10,9 @@
 
 class BackupModule  extends yupe\components\WebModule
 {
-    public $path = __dir__ . DIRECTORY_SEPARATOR . "data";
+    public $path = __dir__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "backup";
+    
+    public $tempFolder = __DIR__ . DIRECTORY_SEPARATOR . "temp";
 
     const VERSION = '1';
 
@@ -202,6 +204,10 @@ class BackupModule  extends yupe\components\WebModule
     {
         parent::init();
 
+        if ($this->path === null) {
+            $this->path = realpath(Yii::getPathOfAlias('webroot') . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "backup");
+        }
+        
         if( !is_dir($this->path) )
         {
             mkdir($this->path);
@@ -252,32 +258,42 @@ class BackupModule  extends yupe\components\WebModule
     
     public function getIgnore() {
         return [
-            '.git',
+            '.git' . DIRECTORY_SEPARATOR,
             'public' . DIRECTORY_SEPARATOR . 'assets',
-            'protected' . DIRECTORY_SEPARATOR . 'runtime'
+            'protected' . DIRECTORY_SEPARATOR . 'runtime',
+            'protected' . DIRECTORY_SEPARATOR . 'backup'
        ];
     }
     
     public function ignored($file) {
+        $d = false;
         foreach ($this->getIgnore() as $value) {
-            if (strpos($file, $value) === 0) {
+            if (strpos($file, $value) !== false) {
                 return true;
             } else {
-                return false;
+                $d = false;
             }
         }
+        return $d;
     }
     
     public function createBackup() 
     {
         ini_set('max_execution_time', 900);
         $source = realpath(Yii::getPathOfAlias("public") . DIRECTORY_SEPARATOR . "..");
+        $conn = explode(';', Yii::app()->getDb()->connectionString);
+        $dbname = substr($conn[2], strpos($conn[2], '=') + 1 );
+        $user = Yii::app()->getDb()->username;
+        $pass = Yii::app()->getDb()->password;
+        $host = substr($conn[0], strpos($conn[0], '=') + 1 );
+        $db = $this->createDbDump($host, $user, $pass, $dbname);
         $zip = new ZipArchive();
-        $dumpName = Yii::app()->name . "_" . date('Y.m.d_H.m.s') . ".zip";
+        $dumpName = Yii::app()->name . "_" . date('Y.m.d_H.i.s') . ".zip";
         if ($zip->open($this->getPath() . DIRECTORY_SEPARATOR . $dumpName, ZIPARCHIVE::CREATE) === true)
         {
             $zip->addEmptyDir('database');
             $zip->addEmptyDir('cms');
+            $zip->addFile($db[0], 'database' . DIRECTORY_SEPARATOR . $db[1]);
             $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($source), RecursiveIteratorIterator::SELF_FIRST);
             foreach ($files as $file) {
                 $file = realpath($file);
@@ -288,13 +304,10 @@ class BackupModule  extends yupe\components\WebModule
                 
                 if ($this->ignored($newName)) 
                 {
-                    if (is_dir($file)) 
+                    if (is_dir($file) && is_file($file . DIRECTORY_SEPARATOR . ".gitignore")) 
                     {
-                        if(file_exists($file . DIRECTORY_SEPARATOR . ".gitignore"))
-                        {
-                            $zip->addEmptyDir('cms' . DIRECTORY_SEPARATOR . $newName);
-                            $zip->addFile($file, 'cms' . DIRECTORY_SEPARATOR . $newName);
-                        }
+                        $zip->addEmptyDir('cms' . DIRECTORY_SEPARATOR . $newName);
+                        $zip->addFile($file . DIRECTORY_SEPARATOR . ".gitignore", 'cms' . DIRECTORY_SEPARATOR . $newName . DIRECTORY_SEPARATOR . ".gitignore");
                     }
                 } else {
                     if (is_dir($file)) {
@@ -306,11 +319,20 @@ class BackupModule  extends yupe\components\WebModule
             }
         }
         $zip->close();
-//        $db = $this->createDbDump('localhost', 'root', '', 'oqilacms');
-//        print_r($db);
+        $this->removeTemp()
     }
     
-    private function createDbDump($host, $user, $pass, $name, $tables=false, $backup_name=false) 
+    private function removeTemp()
+    {
+        $dir = $this->tempFolder;
+        $files = array_diff(scandir($dir), array('.','..')); 
+            foreach ($files as $file) { 
+                (is_dir("$dir/$file")) ? delTree("$dir/$file") : unlink("$dir/$file"); 
+            } 
+            return rmdir($dir); 
+    }
+
+        private function createDbDump($host, $user, $pass, $name, $tables=false, $backup_name=false) 
     {
         $mysqli = new mysqli($host,$user,$pass,$name);
         $mysqli->select_db($name);
@@ -402,10 +424,9 @@ class BackupModule  extends yupe\components\WebModule
         if (!is_dir(__DIR__ . DIRECTORY_SEPARATOR . "temp")) {
             mkdir(__DIR__ . DIRECTORY_SEPARATOR . "temp");
         }
-        $tempFolder = __DIR__ . DIRECTORY_SEPARATOR . "temp";
-        $file = fopen($tempFolder . DIRECTORY_SEPARATOR . $backup_name, 'w');
+        $file = fopen($this->tempFolder . DIRECTORY_SEPARATOR . $backup_name, 'w');
         fwrite($file, $content);
         fclose($file);
-        return $tempFolder . DIRECTORY_SEPARATOR . $backup_name;
+        return [$this->tempFolder . DIRECTORY_SEPARATOR . $backup_name, $backup_name];
     }
 }
