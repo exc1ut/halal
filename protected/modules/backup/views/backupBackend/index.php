@@ -30,16 +30,12 @@ $this->menu = $this->getModule()->getNavigation();
     'zii.widgets.grid.CGridView',
     [
         'id'                => 'cargo-grid',
-//        'type'              => 'striped condensed',
         'dataProvider'      => $model,
-//        'actionsButtons'    => false,
-//        'bulkActions'       => [''],
-//        'hideBulkActions'   => true,
-//        'summaryText'       => false,
         'columns'           => [
             'id',
             'create_time',
             'size'
         ],
     ]
-); ?>
+);
+ 
