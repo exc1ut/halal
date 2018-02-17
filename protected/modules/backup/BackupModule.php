@@ -210,7 +210,7 @@ class BackupModule  extends yupe\components\WebModule
         
         if( !is_dir($this->path) )
         {
-            mkdir($this->path);
+            @mkdir($this->path, 0755);
         }
         
         $this->setImport(
