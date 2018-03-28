@@ -30,7 +30,7 @@ class Mail extends CApplicationComponent
      * Method to send mail: ("mail", "sendmail", or "smtp").
      * @var string
      */
-    public $method = 'mail';
+    public $method = 'smtp';
 
     /**
      * Smtp settings. Associative array. Required on method = smtp.
@@ -56,27 +56,26 @@ class Mail extends CApplicationComponent
     public function init()
     {
         $this->_mailer = new \PHPMailer();
-
+        $this->smtp = [
+            'host' => 'smtp.yandex.ru',
+            'login' => 'robot@oqila.uz',
+            'password' => '8cHDqW4Nd6x7KgdM',
+            'port' => 25,
+            'debug' => 0
+        ];
         switch ($this->method) {
             case 'smtp':
+                
+                $this->_mailer->SMTPDebug = 0;
                 $this->_mailer->isSMTP();
-                $this->_mailer->Host = $this->smtp['host'];
-                if (!empty($this->smtp['username'])) {
-                    $this->_mailer->SMTPAuth = true;
-                    $this->_mailer->Username = $this->smtp['username'];
-                    $this->_mailer->Password = $this->smtp['password'];
-                } else {
-                    $this->_mailer->SMTPAuth = false;
-                }
-                if (isset($this->smtp['port'])) {
-                    $this->_mailer->Port = $this->smtp['port'];
-                }
-                if (isset($this->smtp['secure'])) {
-                    $this->_mailer->SMTPSecure = $this->smtp['secure'];
-                }
-                if (isset($this->smtp['debug'])) {
-                    $this->_mailer->SMTPDebug = (int)$this->smtp['debug'];
-                }
+                $this->_mailer->Host = 'smtp.yandex.ru';
+                $this->_mailer->SMTPAutoTLS = true;
+                $this->_mailer->SMTPAuth = true;
+                $this->_mailer->Username = 'robot@oqila.uz';
+                $this->_mailer->Password = '8cHDqW4Nd6x7KgdM';
+                $this->_mailer->SMTPSecure = 'tls';
+                $this->_mailer->Port = 25;  
+                $this->_mailer->isHTML(true);
                 break;
             case 'sendmail':
                 $this->_mailer->isSendmail();
@@ -159,7 +158,7 @@ class Mail extends CApplicationComponent
     {
         $this->_mailer->clearAllRecipients();
 
-        $this->setFrom($from);
+        $this->setFrom('robot@oqila.uz', \Yii::app()->getModule('yupe')->siteName);
 
         if (is_array($to)) {
             foreach ($to as $email) {
