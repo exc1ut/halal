@@ -1,0 +1,3 @@
+<?php
+
+define('VENDOR_PATH', '/var/www/oqilacms2vendor');

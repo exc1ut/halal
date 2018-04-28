@@ -21,7 +21,7 @@
 Yii::setPathOfAlias('application', __DIR__ . '/../');
 Yii::setPathOfAlias('public', dirname($_SERVER['SCRIPT_FILENAME']));
 Yii::setPathOfAlias('yupe', __DIR__ . '/../modules/yupe/');
-Yii::setPathOfAlias('vendor', __DIR__ . '/../../../vendor/');
+Yii::setPathOfAlias('vendor', VENDOR_PATH);
 Yii::setPathOfAlias('themes', __DIR__ . '/../../themes/');
 
 return [

@@ -2,3 +2,4 @@ db.php
 db-test.php
 main-local.php
 params-local.php
+vendor-local.php
