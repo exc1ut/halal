@@ -2,12 +2,15 @@ AddDefaultCharset utf-8
 <IfModule mod_rewrite.c>
     RewriteEngine on
     
-    # Универсальный редирект с домена С www. на домен БEЗ www
-    # при необходимости - раскомментировать:
-    #
-    # RewriteCond %{HTTPS} !=on
-    # RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-    # RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+    # Redirect from http://www to http://
+    RewriteCond %{HTTPS} !=on
+    RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+    RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+    # Redirect from https://www to https://
+    RewriteCond %{HTTPS} =on
+    RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+    RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 
     # prevent httpd from serving dotfiles (.htaccess, .svn, .git, etc.)
     RedirectMatch 403 /\..*$
