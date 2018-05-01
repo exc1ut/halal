@@ -1,6 +1,3 @@
-/public/assets/*
-/public/uploads/*
-/protected/runtime/*
 *.log
 composer.phar
 *.bin
