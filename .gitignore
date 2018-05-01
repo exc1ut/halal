@@ -1,3 +1,6 @@
+/public/assets/
+/public/uploads/
+/protected/runtime/
 *.log
 composer.phar
 *.bin
@@ -7,7 +10,6 @@ composer.phar
 *.komodoproject
 /nbproject/private/
 /.komodotools/
-*.xml
 *.properties
 nbproject/
 /.idea/
