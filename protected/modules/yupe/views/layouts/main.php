@@ -88,6 +88,8 @@
     <script type="text/javascript">
         var yupeTokenName = '<?= Yii::app()->getRequest()->csrfTokenName;?>';
         var yupeToken = '<?= Yii::app()->getRequest()->getCsrfToken();?>';
+        delete $.mask.definitions[9];
+        $.mask.definitions['d'] = '[0-9]';
     </script>
 
 </head>

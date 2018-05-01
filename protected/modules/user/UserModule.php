@@ -119,11 +119,11 @@ class UserModule extends WebModule
     /**
      * @var string
      */
-    public $phoneMask = '+7-999-999-9999';
+    public $phoneMask = '+998-dd-ddd-dddd';
     /**
      * @var string
      */
-    public $phonePattern = '/^((\+?7)(-?\d{3})-?)?(\d{3})(-?\d{4})$/';
+    public $phonePattern = '/^((\+?998)(-?\d{2})-?)?(\d{3})(-?\d{4})$/';
     /**
      * @var int
      */
