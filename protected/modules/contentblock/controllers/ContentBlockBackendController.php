@@ -155,6 +155,14 @@ class ContentBlockBackendController extends yupe\components\controllers\BackCont
      */
     public function actionDelete($id)
     {
+
+        if (!YII_DEBUG) {
+            throw new CHttpException(
+                403,
+                Yii::t('ContentBlockModule.contentblock', 'Cannot delete in Production Mode!')
+            );
+        }
+
         if (Yii::app()->getRequest()->getIsPostRequest()) {
 
             // we only allow deletion via POST request

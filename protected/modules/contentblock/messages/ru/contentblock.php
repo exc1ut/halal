@@ -97,4 +97,5 @@ return [
     'Viewing blocks' => 'Просмотр блоков',
     'Viewing content block' => 'Просмотр блока контента',
     'yupe team' => 'yupe team',
+    'Cannot delete in Production Mode!' => 'Невозможно удалить в режиме производства!',
 ];
