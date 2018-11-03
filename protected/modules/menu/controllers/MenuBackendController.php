@@ -144,6 +144,13 @@ class MenuBackendController extends yupe\components\controllers\BackController
      */
     public function actionDelete($id)
     {
+        if (!YII_DEBUG) {
+            throw new CHttpException(
+                403,
+                Yii::t('MenuModule.menu', 'Cannot delete in Production Mode!')
+            );
+        }
+
         if (Yii::app()->getRequest()->getIsPostRequest()) {
             // we only allow deletion via POST request
             $this->loadModel($id)->delete();

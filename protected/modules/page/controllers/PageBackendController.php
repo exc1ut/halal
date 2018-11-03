@@ -250,6 +250,14 @@ class PageBackendController extends yupe\components\controllers\BackController
      */
     public function actionDelete($id = null)
     {
+
+        if (!YII_DEBUG) {
+            throw new CHttpException(
+                403,
+                Yii::t('PageModule.page', 'Cannot delete in Production Mode!')
+            );
+        }
+        
         if (Yii::app()->getRequest()->getIsPostRequest()) {
 
             $model = $this->loadModel($id);

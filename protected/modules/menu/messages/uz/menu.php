@@ -143,4 +143,5 @@ return [
     'Viewing menu' => 'Просмотр меню',
     'yes' => 'да',
     'yupe team' => 'yupe team',
+    'Cannot delete in Production Mode!' => 'Невозможно удалить в режиме производства!',
 ];
