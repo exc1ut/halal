@@ -4,3 +4,10 @@ User-agent: *
 # Disallow backend and default controllers
 Disallow: /yupe/backend*
 Disallow: /*/default*
+
+User-agent: SemrushBot
+User-agent: SemrushBot-SA
+User-agent: AhrefsBot
+User-agent: BLEXBot
+User-agent: Nimbostratus-Bot
+Disallow: /
