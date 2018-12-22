@@ -119,4 +119,5 @@ return [
     'Viewing gallery' => 'Просмотр галерей',
     'Visual Editor' => 'Визуальный редактор',
     'yupe team' => 'yupe team',
+    'You cannot delete this gallery, since this is default gallery' => 'Вы не можете удалить эту галерею, так как это галерея по умолчанию',
 ];
