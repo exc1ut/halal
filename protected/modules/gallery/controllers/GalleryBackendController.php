@@ -133,6 +133,13 @@ class GalleryBackendController extends yupe\components\controllers\BackControlle
     {
         if (Yii::app()->getRequest()->getIsPostRequest()) {
 
+            if ($id == 1) {
+                throw new CHttpException(
+                    403,
+                    Yii::t('GalleryModule.gallery', 'You cannot delete this gallery, since this is default gallery')
+                );
+            }
+
             // поддерживаем удаление только из POST-запроса
             $this->loadModel($id)->delete();
 
