@@ -239,12 +239,13 @@ class LangUrlManager extends CUrlManager
                 $path = $path . '/';
             }
             $langs = $this->_languages;
-            foreach ($langs as &$value) {
-                $value = '\/' . $value;
+            $replaced = $path;
+            foreach ($langs as $value) {
+                if (strpos($path, $value . '/') === 0) {
+                    $replaced = str_replace($value, '', $path);
+                    break;
+                }
             }
-            $replaced = preg_replace(
-                    '#^(' . implode('|', $langs) . '){1}#', $lang, $path
-            );
             $replaced = trim($replaced, '/');
 
             if ($path === $replaced && null !== $lang) {
