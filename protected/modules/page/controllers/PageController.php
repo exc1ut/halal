@@ -34,11 +34,10 @@ class PageController extends FrontController
                 ]
             )
             : Page::model()->published()->find(
-                'slug = :slug AND (lang = :lang OR (lang = :deflang))',
+                'slug = :slug AND lang = :lang)',
                 [
                     ':slug' => $slug,
                     ':lang' => Yii::app()->language,
-                    ':deflang' => $this->yupe->defaultLanguage,
                 ]
             );
 
