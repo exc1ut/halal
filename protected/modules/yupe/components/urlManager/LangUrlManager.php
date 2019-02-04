@@ -235,12 +235,17 @@ class LangUrlManager extends CUrlManager
 
         if ('path' === $this->urlFormat && isset($parsed['path'])) {
             $path = trim($parsed['path'], '/');
-
-            $replaced = preg_replace(
-                '#^('.implode('|', $this->_languages).'){1}#',
-                $lang,
-                $path
-            );
+            if (strlen($path) === 2 && in_array($path, $this->_languages, true)) {
+                $path = $path . '/';
+            }
+            $langs = $this->_languages;
+            $replaced = $path;
+            foreach ($langs as $value) {
+                if (strpos($path, $value . '/') === 0) {
+                    $replaced = str_replace($value, '', $path);
+                    break;
+                }
+            }
             $replaced = trim($replaced, '/');
 
             if ($path === $replaced && null !== $lang) {
