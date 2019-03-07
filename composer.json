@@ -96,12 +96,6 @@
         "codeception/codeception": "*"
     },
     "minimum-stability": "stable",
-    "autoload": {
-        "psr-4": {
-            "application\\": "protected/",
-            "yupe\\": "protected/modules/yupe/"
-        }
-    },
     "scripts": {
         "post-create-project-cmd": [
             "yupe\\components\\Composer::postCreate"
