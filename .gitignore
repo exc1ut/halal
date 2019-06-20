@@ -20,3 +20,4 @@ protected/config/db.php
 /.vagrant/
 Vagrantfile
 /DEBUG
+/vendor

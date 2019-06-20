@@ -1,0 +1,24 @@
+.page_topline {
+    font-size: 12px;
+    line-height: 20px;
+    position: relative;
+    z-index: 1001;
+}
+.ds {
+    background-color: #000000;
+    color: #FFFFFF !important;
+}
+.phone {
+    border-radius: 50%;
+    border:1px solid #fff;
+}
+.phone i {
+    color: #fff;
+}
+.small-text {
+    display: flex;
+    color: #FFFFFF !important;
+}
+.fa-phone {
+    color:#fff;
+}

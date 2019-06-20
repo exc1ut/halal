@@ -1,4 +1,8 @@
 <?php $this->widget('zii.widgets.CMenu', [
     'items' => $params['items'],
-    'htmlOptions' => isset($layoutParams['htmlOptions']) ? $layoutParams['htmlOptions'] : [],
+    'htmlOptions' => [
+        'class' => 'mainmenu nav sf-menu'
+    ],
 ])?>
+
+
