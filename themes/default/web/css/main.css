@@ -1726,7 +1726,6 @@ body {
 	font-size: 14px;
 	font-weight: 300;
 	line-height: 24px;
-	background-color: #ccc;
 }
 
 h1,
@@ -7067,7 +7066,8 @@ body.boxed {
 }
 
 .page_header {
-	transition: background 0.2s ease-in-out 0s, margin 0.6s ease-in-out 0s;
+	transition: background 0.2s ease-in-out 0s,
+ margin 0.6s ease-in-out 0s;
 	top: 0;
 	left: 0;
 	right: 0;
@@ -7096,7 +7096,8 @@ body.boxed {
 	.page_header.section_padding_20 [class*="container"] {
 		padding-top: 20px;
 		padding-bottom: 20px;
-		transition: padding-top 0.2s linear 0s, padding-bottom 0.2s linear 0s;
+		transition: padding-top 0.2s linear 0s,
+ padding-bottom 0.2s linear 0s;
 	}
 
 	.page_header.section_padding_20.affix [class*="container"] {
@@ -10963,7 +10964,7 @@ section .intro_section .slide_description_wrapper {
 	.intro_section + .page_header_wrapper .affix .toggle_menu.mobile-active span,
   .intro_section + .page_header_wrapper .affix .toggle_menu.mobile-active span:before,
   .intro_section + .page_header_wrapper .affix .toggle_menu.mobile-active span:after {
-		background-color: #ffffff;
+		background-color: rgb(255,255,255,0.6);
 	}
 
 	.page_toplogo .toggle_menu {

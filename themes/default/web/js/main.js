@@ -788,7 +788,7 @@ function windowLoadInit() {
 		var headerHeight = $header.outerHeight();
 		$header.wrap('<div class="page_header_wrapper"></div>');
 		var $headerWrapper = $header.parent();
-		if (!boxed) {
+		if(!boxed) {
 			$headerWrapper.css({height: headerHeight}); 
 		}
 

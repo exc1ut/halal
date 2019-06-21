@@ -28,6 +28,9 @@ $images = Image::model()->findAll($criteria);
                                                 <?= $image->name; ?>
                                             </h2>
                                         </div>
+                                        <a href="events-left.html" class="theme_button color1">
+											Go to shop
+										</a>
 
                                     </div>
                                     <!-- eof .slide_description -->

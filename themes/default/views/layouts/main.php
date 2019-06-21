@@ -38,16 +38,15 @@
 							</div>
 						</div>
 						<div class="col-sm-4 text-center text-sm-right">
-							<a class="social-icon color-icon soc-facebook" href="#" title="Facebook"></a>
-							<a class="social-icon color-icon soc-twitter" href="#" title="Twitter"></a>
-							<a class="social-icon color-icon soc-google" href="#" title="Twitter"></a>
-							<a class="social-icon color-icon soc-linkedin" href="#" title="Twitter"></a>
+							<a class="social-icon color-icon soc-instagram" href="#" title="Instagram"></a>
 							<a class="social-icon color-icon soc-youtube" href="#" title="Youtube"></a>
+							<a class="social-icon color-icon soc-facebook" href="#" title="Facebook"></a>
+							<a class="social-icon color-icon soc-telegram" href="#" title="Telegram"></a>	
 						</div>
 					</div>
 				</div>
 			</section>
-        <header class="page_header header_white toggler_right section_padding_20">
+        <header class="page_header header_transparent toggler_right section_padding_20">
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-12 display_table">
