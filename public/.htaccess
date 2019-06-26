@@ -1,0 +1,24 @@
+AddDefaultCharset utf-8
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    
+    # Redirect from http://www to http://
+    RewriteCond %{HTTPS} !=on
+    RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+    RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+    # Redirect from https://www to https://
+    RewriteCond %{HTTPS} =on
+    RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+    RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+    # prevent httpd from serving dotfiles (.htaccess, .svn, .git, etc.)
+    RedirectMatch 403 /\..*$
+
+    # if a directory or a file exists, use it directly
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # otherwise forward it to index.php
+    RewriteRule . index.php
+</IfModule>
