@@ -1,7 +1,4 @@
 <?php
-$mainAssets = Yii::app()->getTheme()->getAssetsUrl();
-Yii::app()->getClientScript()->registerCssFile($mainAssets . '/css/store-frontend.css');
-Yii::app()->getClientScript()->registerScriptFile($mainAssets . '/js/store.js');
 /* @var $category StoreCategory */
 
 $this->title =  $category->getMetaTile();
@@ -17,35 +14,60 @@ $this->breadcrumbs = array_merge(
 );
 
 ?>
+<div id="canvas">
+    <div id="box_wrapper">
 
-<div class="row">
-    <div class="col-xs-12">
-        <h1><?= CHtml::encode($category->getTitle()); ?></h1>
-    </div>
-</div>
-
-
-<div class="row">
-    <form id="store-filter" name="store-filter" method="get">
-    </form>
-    <div class="col-sm-9">
-        <section>
-
-            <div class="grid">
-                <?php $this->widget(
-                    'bootstrap.widgets.TbListView',
-                    [
-                        'dataProvider' => $dataProvider,
-                        'itemView' => '//store/product/_item',
-                        'summaryText' => '',
-                        'enableHistory' => true,
-                        'cssFile' => false,
-                        'itemsCssClass' => 'row items',
-                        
-                    ]
-                ); ?>
+        <!-- template sections -->
+        <section class="page_breadcrumbs ds parallax section_padding_top_250 section_padding_bottom_75">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <h2 class="highlight text-uppercase"><?= $category->getTitle() ?></h2>
+                    </div>
+                </div>
             </div>
         </section>
-    </div>
-</div>
 
+        <section class="ls section_padding_top_130 section_padding_bottom_130 columns_padding_25">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+
+
+
+
+                        <div class="columns-3">
+                                 <?php $this->widget(
+                                'bootstrap.widgets.TbListView',
+                                [
+                                    'dataProvider' => $dataProvider,
+                                    'itemView' => '//store/product/_item',
+                                    'summaryText' => '',
+                                    'enableHistory' => true,
+                                    'cssFile' => false,
+                                ]
+                            ); ?>
+
+
+
+                        </div>
+                        <!-- eof .columns-* -->
+
+
+                    </div>
+                    <!--eof .col-sm-8 (main content)-->
+
+
+
+
+
+                </div>
+            </div>
+        </section>
+
+
+
+    </div>
+    <!-- eof #box_wrapper -->
+</div>

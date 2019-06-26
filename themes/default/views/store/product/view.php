@@ -7,19 +7,13 @@ $this->description = $product->getMetaDescription();
 $this->keywords = $product->getMetaKeywords();
 $this->canonical = $product->getMetaCanonical();
 
-$mainAssets = Yii::app()->getModule('store')->getAssetsUrl();
-Yii::app()->getClientScript()->registerScriptFile($mainAssets . '/js/jquery.simpleGal.js');
-
-Yii::app()->getClientScript()->registerCssFile(Yii::app()->getTheme()->getAssetsUrl() . '/css/store-frontend.css');
-Yii::app()->getClientScript()->registerScriptFile(Yii::app()->getTheme()->getAssetsUrl() . '/js/store.js');
-
 $this->breadcrumbs = array_merge(
     [Yii::t("StoreModule.store", 'Catalog') => ['/store/product/index']],
     $product->category ? $product->category->getBreadcrumbs(true) : [],
     [CHtml::encode($product->name)]
 );
 ?>
-<div class="row" xmlns="http://www.w3.org/1999/html">
+<!-- <div class="row" xmlns="http://www.w3.org/1999/html">
     <div class="col-sm-12">
         <div class="row">
             <div class="col-sm-12">
@@ -262,4 +256,112 @@ $this->breadcrumbs = array_merge(
         $("#myTab li").first().addClass('active');
         $(".tab-pane").first().addClass('active');
 JS
-); ?>
+); ?> -->
+
+
+
+<section class="ls section_padding_top_250 section_padding_bottom_130 columns_padding_25">
+				<div class="container">
+					<div class="row">
+
+						<div class="col-sm-12">
+
+
+							<div itemscope="" itemtype="http://schema.org/Product" class="product type-product row columns_padding_25">
+
+								<div class="col-sm-6">
+									<div class="item-media images muted_background text-center rounded overflow_hidden">
+
+										<a href="<?= StoreImage::product($product); ?>" itemprop="image" class="woocommerce-main-image zoom prettyPhoto" data-gal="prettyPhoto[product-gallery]">
+											<img src="<?= StoreImage::product($product); ?>" class="attachment-shop_single wp-post-image" alt="" title="">
+										</a>
+
+										<div class="cs main_color3 entry-meta media-meta vertical-center text-center">
+											<div class="price weight-black fontsize_30">
+												<span>
+													<span class="amount">$<?= round($product->getResultPrice(), 2); ?></span>
+												</span>
+											</div>
+										</div>
+									</div>
+									<!--eof .images -->
+									
+									<!-- eof .images -->
+								</div>
+
+								<div class="summary entry-summary col-sm-6">
+
+
+									<h1 itemprop="name" class="product_title text-uppercase"><?= $product->getTitle()?></h1>
+
+
+									<div>
+										<p><?= $product->description; ?></p>
+									</div>
+
+									
+
+									<hr class="divider_30">
+
+									
+
+										
+
+										
+										
+
+                                    <form action="<?= Yii::app()->createUrl('cart/cart/add'); ?>" method="post">
+                            <input type="hidden" name="Product[id]" value="<?= $product->id; ?>"/>
+                            <?= CHtml::hiddenField(
+                                Yii::app()->getRequest()->csrfTokenName,
+                                Yii::app()->getRequest()->csrfToken
+                            ); ?>
+                            
+                            <?php if (Yii::app()->hasModule('order')): ?>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <div class="input-group">
+                                            <div class="input-group-btn">
+                                                <button class="btn btn-default product-quantity-decrease" type="button">-
+                                                </button>
+                                            </div>
+                                            <input type="text" class="text-center form-control" value="1"
+                                                   name="Product[quantity]" id="product-quantity"/>
+
+                                            <div class="input-group-btn">
+                                                <button class="btn btn-default product-quantity-increase" type="button">+
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="text-center">
+                                        <button class="btn btn-success pull-center" id="add-product-to-cart"
+                                                data-loading-text="<?= Yii::t("StoreModule.store", "Adding"); ?>">
+                                            <?= Yii::t("StoreModule.store", "Add to cart"); ?>
+                                        </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                        </form>
+								 
+
+
+								</div>
+								<!-- .summary.col- -->
+
+							</div>
+							<!-- .product.row -->
+
+
+						</div>
+						<!--eof .col-sm-8 (main content)-->
+
+					</div>
+				</div>
+			</section>
+

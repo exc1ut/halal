@@ -23,7 +23,128 @@ class SiteController extends FrontController
      */
     public function actionIndex()
     {
+        \Yii::import('application.models.Contact');
+        $model = new \Contact('index');
+        $data = $_POST;
+        if (!empty($data)) {
+            $model->setAttributes($data);
+            if ($model->validate()) {
+                $email = new \PHPMailer();
+                $email->SMTPDebug = 0;
+                $email->isSMTP();
+                $email->Host = 'smtp.yandex.ru';
+                $email->SMTPAutoTLS = true;
+                $email->SMTPAuth = true;
+                $email->Username = 'testing@oqila.uz';
+                $email->Password = 'oqila-test';
+                $email->SMTPSecure = 'tls';
+                $email->Port = 25;
+                $email->setFrom('testing@oqila.uz');
+                $email->isHTML(true);
+                $email->Subject = 'Message from site';
+                $email->Body = <<<TEST
+                Name: {$model->name};
+                Phone: {$model->phone};
+                Email: {$model->email};
+                Address: {$model->address};
+                Message: {$model->message};
+TEST;
+                $email->AddAddress('umid19999@gmail.com');
+                $email->TimeOut = 5;
+                $email->CharSet = 'UTF-8';
+                $email->Send();
+            }
+        }
+
+
         $this->render('index');
+    }
+
+    public function actionContacts()
+    {
+        \Yii::import('application.models.Contact');
+        $model = new \Contact('contact');
+        $data = \Yii::app()->request->getPost('Contact');
+        if (!empty($data)) {
+            $model->setAttributes($data);
+            if ($model->validate()) {
+                $email = new \PHPMailer();
+                $email->SMTPDebug = 0;
+                $email->isSMTP();
+                $email->Host = 'smtp.yandex.ru';
+                $email->SMTPAutoTLS = true;
+                $email->SMTPAuth = true;
+                $email->Username = 'testing@oqila.uz';
+                $email->Password = 'oqila-test';
+                $email->SMTPSecure = 'tls';
+                $email->Port = 25;
+                $email->setFrom('testing@oqila.uz');
+                $email->isHTML(true);
+                $email->Subject = 'Message from site';
+                $email->Body = <<<TEST
+                Name: {$model->name};
+                Phone: {$model->phone};
+                Email: {$model->email};
+                Address: {$model->address};
+                Message: {$model->message};
+TEST;
+                $email->AddAddress('umid19999@gmail.com');
+                $email->TimeOut = 5;
+                $email->CharSet = 'UTF-8';
+                $email->Send();
+            }
+        }
+        $this->render('contact', [
+            'model' => $model
+        ]);
+    }
+    public function actionOrder() 
+    {
+        $text = '';
+        \Yii::import('application.models.Order');
+        $model = new \Order();
+        $data = \Yii::app()->request->getPost('Order');
+        $positions = \Yii::app()->cart->getPositions();
+        
+        foreach($positions as $position)
+        {
+            $text .=  "Name : {$position->name}". "\n";
+        }
+
+        if (!empty($data)) {
+            $model->setAttributes($data);
+            if ($model->validate()) {
+                $email = new \PHPMailer();
+                $email->SMTPDebug = 0;
+                $email->isSMTP();
+                $email->Host = 'smtp.yandex.ru';
+                $email->SMTPAutoTLS = true;
+                $email->SMTPAuth = true;
+                $email->Username = 'testing@oqila.uz';
+                $email->Password = 'oqila-test';
+                $email->SMTPSecure = 'tls';
+                $email->Port = 25;
+                $email->setFrom('testing@oqila.uz');
+                $email->isHTML(true);
+                $email->Subject = 'Message from site';
+                $email->Body = <<<TEST
+                Name: {$model->name};
+                Phone: {$model->phone};
+                Email: {$model->email};
+                Address: {$model->address};
+                Message: {$model->message};
+                Surname: {$model->surname};
+                Name: {$text};
+TEST;
+                $email->AddAddress('umid19999@gmail.com');
+                $email->TimeOut = 5;
+                $email->CharSet = 'UTF-8';
+                $email->Send();
+            }
+        }
+        $this->render('order',[
+            'model' => $model
+        ]);
     }
 
     /**

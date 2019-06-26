@@ -262,7 +262,7 @@ class Menu extends yupe\models\YModel
 
                 $items[] = [
                         'label' => $result->title,
-                        'labelEncode' => false,
+                        'encodeLabel' => false,
                         'template' => $result->before_link.'{menu}'.$result->after_link,
                         'itemOptions' => ['class' => 'listItem'.$class],
                         'linkOptions' => [

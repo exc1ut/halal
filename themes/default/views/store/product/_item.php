@@ -7,25 +7,28 @@
             </div>
         </div>
         <div class="item-content">
-            <header class="content-justify bottommargin_25">
+            <header class="bottommargin_25 ">
                 <div>
                     <h4 class="text-uppercase bottommargin_10">
                         <a href="<?= ProductHelper::getUrl($data); ?>">
                             <?= $data->name ?>
                         </a>
                     </h4>
-                    <span><?= $data->create_time ?></span>
-                </div>
-                <div>
-                    <p class="price-big highlight text-right">
-                        <span class="amount text-left">$<?= $data->price ?></span>
-                        <span class="price-text">per visitor</span>
+                    <p class="product-description">
+                    <?= $data->description ?>
                     </p>
                 </div>
+                <div class="price-basket">
+                    <p class="price highlight text-left">
+                        <span class="amount text-left"><?= $data->price ?>$</span><br>
+                        <?php if($data->discount_price):?>
+                        <span class="discount"><?= $data->discount_price ?>$</span>
+                        <?php endif; ?>
+                    </p>
+                    <a href="<?= ProductHelper::getUrl($data); ?>" class="theme_button color1 small_button min_width_button"><?= Yii::t('default', 'add to basket'); ?></a>
+                </div>
             </header>
-            <div class="entry-content">
-                <a href="contact.html" class="theme_button small_button inactive min_width_button">registration closed</a>
-            </div>
+            
         </div>
     </article>
 </div>

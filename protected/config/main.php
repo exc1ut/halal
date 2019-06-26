@@ -120,6 +120,8 @@ return [
             'useStrictParsing' => true,
             'rules' => [ // Main rules
                 '/' => '/site/index',
+                '/contacts' => '/site/contacts',
+                '/order' => '/site/order',
                 // For correct work of installer
                 '/install/default/<action:\w+>' => '/install/default/<action>',
                 '/backend' => '/yupe/backend/index',
