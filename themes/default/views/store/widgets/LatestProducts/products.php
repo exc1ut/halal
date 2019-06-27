@@ -16,7 +16,7 @@
 					</div>
 					
 					<div class="row columns_margin_bottom_20">
-                    <? foreach($products as $product): ?>
+                    <?php foreach($products as $product): ?>
                     <?php $this->controller->renderPartial('//store/product/_item', ['data' => $product]); ?>
                     <? endforeach; ?>
 					</div>
