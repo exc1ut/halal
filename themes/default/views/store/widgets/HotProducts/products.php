@@ -13,7 +13,7 @@
 
             <?php foreach ($products as $product) : ?>
                 <?php $this->controller->renderPartial('//store/product/_item', ['data' => $product]); ?>
-            <? endforeach; ?>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>
