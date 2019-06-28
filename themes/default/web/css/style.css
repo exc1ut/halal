@@ -73,7 +73,7 @@ section.last-added-products {
         rgba(0, 0, 0, 0.5), 
         rgba(0, 0, 0, 0.5)
       ),
-    url("../images/meat.png") center center no-repeat;
+    url("../images/meat.jpg") center center no-repeat;
     background-size: cover;
 }
 section.last-added-products .section_header {
