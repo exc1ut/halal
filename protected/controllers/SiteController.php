@@ -60,6 +60,11 @@ TEST;
         $this->render('index');
     }
 
+    public function actionLang()
+    {
+        return $this->render('language');
+    }
+
     public function actionContacts()
     {
         \Yii::import('application.models.Contact');

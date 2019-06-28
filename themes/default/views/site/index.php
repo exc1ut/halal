@@ -14,7 +14,7 @@ $certcriteria->compare('category.lang', Yii::app()->language);
 $certs = Image::model()->findAll($certcriteria);
 ?>
 
-<section class="intro_section section_padding_top_130   page_mainslider ds">
+<section class="intro_section section_padding_top_130  mobile-padding page_mainslider ds">
     <div class="flexslider vertical-nav" data-dots="true" data-nav="false">
         <ul class="slides">
             <?php foreach ($images as $image) : ?>
@@ -35,9 +35,7 @@ $certs = Image::model()->findAll($certcriteria);
                                                 <?= $image->name; ?>
                                             </h2>
                                         </div>
-                                        <a href="events-left.html" class="theme_button color1">
-                                        <?= Yii::t('default', 'Go to shop'); ?>
-                                        </a>
+                                        
 
                                     </div>
                                     <!-- eof .slide_description -->
@@ -111,12 +109,12 @@ $certs = Image::model()->findAll($certcriteria);
             <?php foreach($certs as $cert) : ?>
             <div class="col-sm-6">
                     <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <div class="image-wrapper">
                             <img class="cert-img" src="<?= $cert->getImageUrl(); ?>" alt="">
                         </div>
                     </div>
-                    <div class="col-sm-8">
+                    <div class="col-sm-6">
                     <p class="cert-text">
                         <?= $cert->description?>
                     </p>

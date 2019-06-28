@@ -14,15 +14,15 @@
                             <?= $data->name ?>
                         </a>
                     </h4>
-                    <p class="product-description">
-                    <?= $data->description ?>
-                    </p>
+                    <div class="product-description">
+                        <?= $data->short_description ?>
+                    </div>
                 </div>
                 <div class="price-basket">
                     <p class="price highlight text-left">
-                        <span class="amount text-left"><?= $data->price ?>$</span><br>
+                        <span class="amount text-left"><?= number_format($data->price) ?>$</span><br>
                         <?php if($data->discount_price):?>
-                        <span class="discount"><?= $data->discount_price ?>$</span>
+                        <span class="discount"><?= number_format($data->discount_price) ?>$</span>
                         <?php endif; ?>
                     </p>
                     <a href="<?= ProductHelper::getUrl($data); ?>" class="theme_button color1 small_button min_width_button"><?= Yii::t('default', 'add to basket'); ?></a>

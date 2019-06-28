@@ -258,9 +258,19 @@ $this->breadcrumbs = array_merge(
 JS
 ); ?> -->
 
+<section class="page_breadcrumbs ds parallax section_padding_top_250 section_padding_bottom_75">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 text-center">
+							<h2 class="highlight text-uppercase"><?= $product->getTitle()?></h2>
+						</div>
+					</div>
+				</div>
+			</section>
 
 
-<section class="ls section_padding_top_250 section_padding_bottom_130 columns_padding_25">
+
+<section class="ls section_padding_top_130 section_padding_bottom_130 columns_padding_25">
 				<div class="container">
 					<div class="row">
 
@@ -276,7 +286,7 @@ JS
 											<img src="<?= StoreImage::product($product); ?>" class="attachment-shop_single wp-post-image" alt="" title="">
 										</a>
 
-										<div class="cs main_color3 entry-meta media-meta vertical-center text-center">
+										<div class="cs main_color4 entry-meta media-meta vertical-center text-center">
 											<div class="price weight-black fontsize_30">
 												<span>
 													<span class="amount">$<?= round($product->getResultPrice(), 2); ?></span>

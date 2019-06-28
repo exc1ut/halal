@@ -37,6 +37,55 @@
 </head>
 
 <body>
+<section class="modal modalWindow" id="popupOne"> 
+<div class="align-middle">
+<div class="container">
+					
+						<div class="row">
+						<div class=" col-lg-4 col-sm-4">
+							<div id="english" class="teaser main_bg_color offset_icon hover_icon rounded text-center">
+								<div class="teaser_icon main_bg_color size_small round">
+									<i class="fa fa-language" aria-hidden="true"></i>
+								</div>
+								<h4 class="text-uppercase">
+									<a href="/en">
+							ENGLISH
+						</a>
+								</h4>
+								
+							</div>
+						</div>
+						<div class=" col-lg-4 col-sm-4">
+							<div id="russian" class="teaser main_bg_color2 offset_icon hover_icon rounded text-center">
+								<div class="teaser_icon main_bg_color2 size_small round">
+									<i class="fa fa-language" aria-hidden="true"></i>
+								</div>
+								<h4 class="text-uppercase">
+									<a href="/ru">
+							РУССКИЙ
+						</a>
+								</h4>
+								
+							</div>
+						</div>
+						<div class=" col-lg-4 col-sm-4">
+							<div id="korean" class="teaser main_bg_color3 offset_icon hover_icon rounded text-center">
+								<div  class="teaser_icon main_bg_color3 size_small round">
+									<i class="fa fa-language" aria-hidden="true"></i>
+								</div>
+								<h4 class="text-uppercase">
+									<a href="/kr">
+									한국어
+						</a>
+								</h4>
+								
+							</div>
+						</div>
+						
+					</div>
+					</div>
+				</div>
+</section>
     <div id="canvas">
         <div id="box_wrapper">
         <section class="page_topline ds table_section table_section_sm section_padding_top_5 section_padding_bottom_5">

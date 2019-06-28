@@ -17,16 +17,29 @@ $this->keywords = $model->keywords ?: Yii::app()->getModule('yupe')->siteKeyWord
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <h2 class="section_header">
-                    <?= $model->title?>
-                </h2>
-                
-                <p><?= $model->body?></p>
-                
-            </div>
+							<h2 class="section_header">
+                            <?= $model->title?>
+								<span class="small"><?= $model->title_short?></span>
+							</h2>
+							<?= $model->body?>
+			</div>
+
 
         <div class="col-md-6">
             <img src="<?= $this->mainAssets . '/images/sosiska.png' ?>" alt="">
         </div>
     </div>
 </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
