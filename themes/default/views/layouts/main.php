@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="<?= Yii::app()->language; ?>">
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -99,10 +98,10 @@
 							</div>
 						</div>
 						<div class="col-sm-4 text-center text-sm-right">
-							<a class="social-icon color-icon soc-instagram" href="#" title="Instagram"></a>
-							<a class="social-icon color-icon soc-youtube" href="#" title="Youtube"></a>
-							<a class="social-icon color-icon soc-facebook" href="#" title="Facebook"></a>
-							<a class="social-icon color-icon soc-telegram" href="#" title="Telegram"></a>	
+							<a class="social-icon color-icon soc-instagram" href="<?php $this->widget("application.modules.contentblock.widgets.ContentBlockWidget",["code" => "instagram"]);?>" title="Instagram"></a>
+							<a class="social-icon color-icon soc-youtube" href="<?php $this->widget("application.modules.contentblock.widgets.ContentBlockWidget",["code" => "youtube"]);?>" title="Youtube"></a>
+							<a class="social-icon color-icon soc-facebook" href="<?php $this->widget("application.modules.contentblock.widgets.ContentBlockWidget",["code" => "facebook"]);?>" title="Facebook"></a>
+							<a class="social-icon color-icon soc-telegram" href="<?php $this->widget("application.modules.contentblock.widgets.ContentBlockWidget",["code" => "telegram"]);?>" title="Telegram"></a>	
 						</div>
 					</div>
 				</div>
@@ -178,11 +177,11 @@
 					<?= Yii::t('default', 'Follow Us'); ?>
 					</h2>
 					<div class="footer-icon">
-					<img src="<?= $this->mainAssets . '/images/telegram.png'?>" alt="">
-					<img src="<?= $this->mainAssets . '/images/facebook.png'?>" alt="">
-					<img src="<?= $this->mainAssets . '/images/instagram.png'?>" alt="">
-					<img src="<?= $this->mainAssets . '/images/youtube.png'?>" alt="">
-					</div>
+					<a href="<?php $this->widget("application.modules.contentblock.widgets.ContentBlockWidget",["code" => "telegram"]);?>"><img src="<?= $this->mainAssets . '/images/telegram.png'?>" alt=""></a>
+					<a href="<?php $this->widget("application.modules.contentblock.widgets.ContentBlockWidget",["code" => "facebook"]);?>"><img src="<?= $this->mainAssets . '/images/facebook.png'?>" alt=""></a>
+					<a href="<?php $this->widget("application.modules.contentblock.widgets.ContentBlockWidget",["code" => "instagram"]);?>"><img src="<?= $this->mainAssets . '/images/instagram.png'?>" alt=""></a>
+					<a href="<?php $this->widget("application.modules.contentblock.widgets.ContentBlockWidget",["code" => "youtube"]);?>"><img src="<?= $this->mainAssets . '/images/youtube.png'?>" alt=""></a>
+					
 				</div>
             </div>
             <div class="col-sm-1">
