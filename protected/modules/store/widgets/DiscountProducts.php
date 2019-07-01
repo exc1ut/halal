@@ -22,6 +22,7 @@ class DiscountProducts extends \yupe\widgets\YWidget
         $criteria = new CDbCriteria();
         $criteria->limit = 6;
         $criteria->condition = 'discount_price IS not NULL';
+        $criteria->compare('lang', Yii::app()->language);
         $products = Product::model()->findAll($criteria);
 
         $this->render(

@@ -4673,8 +4673,6 @@ header [class*="col-"],
 }
 
 .parallax.ds:after {
-	background-color: #1f232b;
-	opacity: 0.8;
 }
 
 .background_cover.ds:after {

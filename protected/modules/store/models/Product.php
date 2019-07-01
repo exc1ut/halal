@@ -150,6 +150,7 @@ class Product extends yupe\models\YModel implements ICommentable
             ['discount_price, discount, average_price, purchase_price, recommended_price', 'default', 'value' => null],
             ['sku', 'length', 'max' => 100],
             ['slug', 'length', 'max' => 150],
+            ['lang','length','max'=> 2],
             ['external_id', 'length', 'max' => 100],
             [
                 'slug',

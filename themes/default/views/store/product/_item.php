@@ -25,7 +25,7 @@
                         <span class="discount"><?= number_format($data->discount_price) ?>$</span>
                         <?php endif; ?>
                     </p>
-                    <a href="<?= ProductHelper::getUrl($data); ?>" class="theme_button color1 small_button min_width_button"><?= Yii::t('default', 'add to basket'); ?></a>
+                    <a href="<?= ProductHelper::getUrl($data); ?>" class="theme_button color1 small_button min_width_button"><?= Yii::t('default', 'Add to cart'); ?></a>
                 </div>
             </header>
             

@@ -120,11 +120,11 @@ color: #595959 !important;
 }
 .price-basket {
     display: flex !important;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap:wrap;
 }
 .price-basket>a {
-    margin:auto;
+    margin:auto 0;
     font-size: 13px;
     padding:10px;
 }
@@ -519,7 +519,8 @@ section.modal {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 998;
+    z-index: 100000 !important;
+    overflow: hidden;
 }
 
 
@@ -630,4 +631,19 @@ padding:0 !important
 
 .btn.btn-success.pull-center {
     background:#E74240;
+}
+.page_breadcrumbs:after {
+    content: "";
+    background: url(../images/br.png) no-repeat;
+    width: 148px;
+    height: 103px;
+    position: absolute;
+    bottom: -40px;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    margin-top: 325px;
+    z-index:1000;
+    opacity: 1 !important;
+    background-color:none !important;
 }

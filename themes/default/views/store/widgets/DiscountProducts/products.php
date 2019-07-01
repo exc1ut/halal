@@ -3,7 +3,7 @@
 		<div class="row">
 			<div class="col-sm-12 text-center">
 				<h2 class="section_header">
-					<?= Yii::t('default', 'Lowed Price'); ?>
+					<?= Yii::t('default', 'Discount products'); ?>
 				</h2>
 			</div>
 		</div>

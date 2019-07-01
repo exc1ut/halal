@@ -22,6 +22,8 @@ class LatestProducts extends \yupe\widgets\YWidget
         $criteria = new CDbCriteria();
         $criteria->limit = 6;
         $criteria->order = 'create_time DESC';
+        $criteria->addCondition('discount_price IS NULL');
+        $criteria->compare('lang', Yii::app()->language);
         $products = Product::model()->findAll($criteria);
 
         $this->render(

@@ -217,8 +217,8 @@ class ProductRepository extends CApplicationComponent
 
         $criteria->addInCondition('t.category_id', array_unique($categories));
         $criteria->addCondition(sprintf('t.id IN (SELECT product_id FROM {{store_product_category}} WHERE %s)',
-            $builder->createInCondition('{{store_product_category}}', 'category_id', $categories)), 'OR');
-
+        $builder->createInCondition('{{store_product_category}}', 'category_id', $categories)), 'OR');
+        $criteria->compare('lang', Yii::app()->language);
         $pagination = [
             'pageSize' => (int)Yii::app()->getModule('store')->itemsPerPage,
             'pageVar' => 'page',

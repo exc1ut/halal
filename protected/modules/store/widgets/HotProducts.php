@@ -22,6 +22,7 @@ class HotProducts extends \yupe\widgets\YWidget
         $criteria = new CDbCriteria();
         $criteria->limit = 3;
         $criteria->condition = 'is_special = 1';
+        $criteria->compare('lang', Yii::app()->language);
         $products = Product::model()->findAll($criteria);
 
         $this->render(

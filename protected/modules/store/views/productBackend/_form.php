@@ -116,6 +116,18 @@ $form = $this->beginWidget(
                 <?= $form->textFieldGroup($model, 'discount'); ?>
             </div>
         </div>
+        <div class="row">
+        <?= $form->dropDownListGroup(
+                $model,
+                'lang',
+                [
+                    'widgetOptions' => [
+                        'data' => $this->yupe->getLanguagesList(),
+                    ],
+                ]
+            ); ?>
+            
+        </div>
 
         <div class="row">
             <div class="col-sm-7">

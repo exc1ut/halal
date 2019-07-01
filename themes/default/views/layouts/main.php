@@ -120,7 +120,7 @@
 							<div class="header_mainmenu display_table_cell text-right">
 								<!-- main nav start -->
 								<nav class="mainmenu_wrapper">
-                                <?php $this->widget('application.modules.menu.widgets.MenuWidget', ['name' => 'top-menu-uz']); ?>
+                                <?php $this->widget('application.modules.menu.widgets.MenuWidget', ['name' => 'top-menu-'. Yii::app()->language]); ?>
 								</nav>
 								<!-- eof main nav -->
 								<!-- header toggler -->

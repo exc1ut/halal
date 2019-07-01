@@ -101,7 +101,7 @@ $certs = Image::model()->findAll($certcriteria);
         <div class="row">
             <div class="col-sm-12 text-center">
                 <h2 class="section_header">
-                    <?= Yii::t('default', 'Our Achievments'); ?>
+                    <?= Yii::t('default', 'Our achievements'); ?>
                 </h2>
             </div>
         </div>

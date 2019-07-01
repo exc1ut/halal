@@ -13,6 +13,16 @@ $this->keywords = $model->keywords ?: Yii::app()->getModule('yupe')->siteKeyWord
 ?>
 
 
+<section class="page_breadcrumbs ds parallax section_padding_top_250 section_padding_bottom_75">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 text-center">
+							<h2 class="highlight text-uppercase"><?=Yii::t('default','About us')?></h2>
+						</div>
+					</div>
+				</div>
+			</section>
+
 <section class="ls page_about background_cover section_padding_top_250 section_padding_bottom_150">
     <div class="container">
         <div class="row">
