@@ -6,9 +6,11 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta http-equiv="Content-Language" content="ru-RU" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel='shortcut icon' href='<?= $this->mainAssets . '/images/ficon.png' ?>' type='image/x-icon' />
 	<title><?= $this->title; ?></title>
 	<meta name="description" content="<?= $this->description; ?>" />
 	<meta name="keywords" content="<?= $this->keywords; ?>" />
+
 	<?php
 	$cs = Yii::app()->getClientScript();
 	$cs->registerCssFile('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800&display=swap&subset=cyrillic-ext');
@@ -199,7 +201,7 @@
 
 							<div class="col-sm-6">
 								<div class="contact-form-name">
-									<div class="form-group"><label class="control-label" for="Contact_name"> <?= Yii::t('default', 'Name'); ?> </label><input class="form-control" placeholder="Name" name="name" id="Contact_name" type="text">
+									<div class="form-group"><label class="control-label" for="Contact_name"> <?= Yii::t('default', 'Name'); ?> </label><input required class="form-control" placeholder="Name" name="name" id="Contact_name" type="text">
 										<div class="help-block error" id="Contact_name_em_" style="display:none"></div>
 									</div>
 								</div>
@@ -207,7 +209,7 @@
 
 							<div class="col-sm-6">
 								<div class="contact-form-phone">
-									<div class="form-group"><label class="control-label" for="Contact_phone"><?= Yii::t('default', 'Phone'); ?> </label><input class="form-control" placeholder="Phone" name="phone" id="Contact_phone" type="text">
+									<div class="form-group"><label class="control-label" for="Contact_phone"><?= Yii::t('default', 'Phone'); ?> </label><input required class="form-control" placeholder="Phone" name="phone" id="Contact_phone" type="text">
 										<div class="help-block error" id="Contact_phone_em_" style="display:none"></div>
 									</div>
 								</div>
@@ -215,7 +217,7 @@
 							<div class="col-sm-12">
 
 								<div class="contact-form-message">
-									<div class="form-group"><label class="control-label" for="Contact_message"><?= Yii::t('default', 'Message'); ?></label><textarea class="form-control" placeholder="Message" name="message" id="Contact_message"></textarea>
+									<div class="form-group"><label class="control-label" for="Contact_message"><?= Yii::t('default', 'Message'); ?></label><textarea required class="form-control" placeholder="Message" name="message" id="Contact_message"></textarea>
 										<div class="help-block error" id="Contact_message_em_" style="display:none"></div>
 									</div>
 								</div>
