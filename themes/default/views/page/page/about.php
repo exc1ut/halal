@@ -26,13 +26,11 @@ $this->keywords = $model->keywords ?: Yii::app()->getModule('yupe')->siteKeyWord
 <section class="ls page_about background_cover section_padding_top_250 section_padding_bottom_150">
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
-							<h2 class="section_header">
-                            <?= $model->title?>
-								<span class="small"><?= $model->title_short?></span>
-							</h2>
-							<?= $model->body?>
-			</div>
+		<?php $this->widget(
+                "application.modules.contentblock.widgets.ContentBlockWidget",
+                ["code" => "about-" . Yii::app()->language, 'view' => 'about']
+            );
+            ?>
 
 
         <div class="col-md-6">

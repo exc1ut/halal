@@ -328,34 +328,20 @@ JS
                             ); ?>
                             
                             <?php if (Yii::app()->hasModule('order')): ?>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <div class="input-group">
-                                            <div class="input-group-btn">
-                                                <button class="btn btn-default product-quantity-decrease" type="button">-
-                                                </button>
-                                            </div>
-                                            <input type="text" class="text-center form-control" value="1"
-                                                   name="Product[quantity]" id="product-quantity"/>
+                                
 
-                                            <div class="input-group-btn">
-                                                <button class="btn btn-default product-quantity-increase" type="button">+
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                                <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="text-center">
-                                        <button class="btn btn-success pull-center" id="add-product-to-cart"
+                                <span class="quantity form-group rightmargin_10">
+											<input type="button" value="+" class="plus product-quantity-increase">
+											<i class="fa fa-angle-up" aria-hidden="true"></i>
+											<input type="number" step="1" min="0" name="product_quantity" value="1" title="Qty" id="product_quantity" class="form-control ">
+											<input type="button" value="-" class="minus product-quantity-decrease">
+											<i class="fa fa-angle-down" aria-hidden="true"></i>
+										</span>
+                                        <button class="theme_button color1 wide_button add_to_cart_button" id="add-product-to-cart"
                                                 data-loading-text="<?= Yii::t("StoreModule.store", "Adding"); ?>">
                                             <?= Yii::t("StoreModule.store", "Add to cart"); ?>
                                         </button>
-                                        </div>
-                                    </div>
-                                </div>
+                                        
                             <?php endif; ?>
                         </form>
 								 

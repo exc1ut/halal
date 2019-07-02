@@ -1,5 +1,5 @@
 <?php
-$this->title = Yii::app()->getModule('yupe')->siteName;
+$this->title = Yii::t('default','Halal Brothers');
 $criteria = new CDbCriteria();
 $criteria->with = 'category';
 $criteria->compare('category.slug', 'banner');

@@ -13271,7 +13271,7 @@ widget_pages
 	font-size: 40px;
 	font-family: 'Roboto', sans-serif;
 	font-weight: 900;
-	margin: 18px 0 2px;
+	margin: 18px 0 15px;
 }
 
 .teaser .teaser_icon + h3[class*="count"] {
