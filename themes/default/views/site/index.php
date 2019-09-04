@@ -1,5 +1,5 @@
 <?php
-$this->title = Yii::t('default','Halal Brothers');
+$this->title = Yii::t('default','Halal Baraka');
 $criteria = new CDbCriteria();
 $criteria->with = 'category';
 $criteria->compare('category.slug', 'banner');
@@ -35,6 +35,11 @@ $certs = Image::model()->findAll($certcriteria);
                                                 <?= $image->name; ?>
                                             </h2>
                                         </div>
+                                        <div class="intro-layer animated fadeInUp" data-animation="fadeInUp" style="visibility: hidden;">
+													<a href="<?= $image->description?>" class="theme_button color1">
+											<?=Yii::t('default','Go to Shop')?>
+										</a>
+												</div>
                                         
 
                                     </div>
@@ -59,13 +64,15 @@ $certs = Image::model()->findAll($certcriteria);
 <section class="ls page_about background_cover section_padding_top_130 section_padding_bottom_150">
     <div class="container">
         <div class="row">
+        <div class="col-md-6">
             <?php $this->widget(
                 "application.modules.contentblock.widgets.ContentBlockWidget",
                 ["code" => "about-" . Yii::app()->language, 'view' => 'about']
             );
             ?>
+        </div>
             <div class="col-md-6">
-                <img src="<?= $this->mainAssets . '/images/sosiska.png' ?>" alt="">
+                <img src="<?= $this->mainAssets . '/images/about_page.jpg' ?>" alt="">
             </div>
         </div>
     </div>
@@ -93,7 +100,7 @@ $certs = Image::model()->findAll($certcriteria);
 
 <?php $this->widget(
     "application.modules.contentblock.widgets.ContentBlockWidget",
-    ["code" => "statistics-uz"]
+    ["code" => "statistics-". Yii::app()->language]
 );
 ?>
 <section class="certification padding-80">
@@ -106,23 +113,28 @@ $certs = Image::model()->findAll($certcriteria);
             </div>
         </div>
         <div class="row">
-            <?php foreach($certs as $cert) : ?>
-            <div class="col-sm-6">
-                    <div class="row">
-                    <div class="col-sm-6">
-                        <div class="image-wrapper">
-                            <img class="cert-img" src="<?= $cert->getImageUrl(); ?>" alt="">
+        <div class="isotope_container isotope row masonry-layout columns_margin_bottom_20" data-filters=".isotope_filters">
+        <?php foreach($certs as $cert) : ?>
+<div class="isotope-item col-lg-6 col-md-6 col-sm-6">
+    <div class="row">
+        <div class="item-media col-sm-6">
+            <div class="image-wrapper">
+                <img src="<?= $cert->getImageUrl(); ?>" alt="">
+                <div class="media-links">
+                    <a href="<?= $cert->getImageUrl(); ?>" class="abs-link prettyPhoto" title="" data-gal="prettyPhoto[gal]"></a>
+                </div>
                         </div>
-                    </div>
-                    <div class="col-sm-6">
+        </div>
+        <div class="item-content col-sm-6">
                     <p class="cert-text">
                         <?= $cert->description?>
                     </p>
-                    </div>
-                    </div>
-                </div>
-
-            <?php endforeach; ?>
+        </div>
+    </div>
+</div>
+<?php endforeach; ?>
+</div>
+            
         </div>
 
     </div>

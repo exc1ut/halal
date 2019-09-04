@@ -8,7 +8,7 @@
 			</div>
 		</div>
 
-		<div class="row columns_margin_bottom_20">
+		<div class="row">
 			<?php foreach ($products as $product) : ?>
 				<?php $this->controller->renderPartial('//store/product/_item', ['data' => $product,
 				'']); ?>

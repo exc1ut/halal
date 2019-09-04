@@ -258,11 +258,10 @@ $this->breadcrumbs = array_merge(
 JS
 ); ?> -->
 
-<section class="page_breadcrumbs ds parallax section_padding_top_250 section_padding_bottom_75">
+<section style="padding-bottom: 35px" class="page_breadcrumbs ds parallax section_padding_top_250 section_padding_bottom_75">
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-12 text-center">
-							<h2 class="highlight text-uppercase"><?= $product->getTitle()?></h2>
 						</div>
 					</div>
 				</div>
@@ -283,7 +282,7 @@ JS
 									<div class="item-media images muted_background text-center rounded overflow_hidden">
 
 										<a href="<?= StoreImage::product($product); ?>" itemprop="image" class="woocommerce-main-image zoom prettyPhoto" data-gal="prettyPhoto[product-gallery]">
-											<img src="<?= StoreImage::product($product); ?>" class="attachment-shop_single wp-post-image" alt="" title="">
+											<img style="padding:0" src="<?= StoreImage::product($product); ?>" class="attachment-shop_single wp-post-image" alt="" title="">
 										</a>
 
 										<div class="cs main_color4 entry-meta media-meta vertical-center text-center">
@@ -333,7 +332,7 @@ JS
                                 <span class="quantity form-group rightmargin_10">
 											<input type="button" value="+" class="plus product-quantity-increase">
 											<i class="fa fa-angle-up" aria-hidden="true"></i>
-											<input type="number" step="1" min="0" name="product_quantity" value="1" title="Qty" id="product_quantity" class="form-control ">
+											<input type="number" step="1" min="0" name="Product[quantity]" value="1" title="Qty" id="product_quantity" class="form-control ">
 											<input type="button" value="-" class="minus product-quantity-decrease">
 											<i class="fa fa-angle-down" aria-hidden="true"></i>
 										</span>

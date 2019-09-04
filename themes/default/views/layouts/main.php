@@ -10,8 +10,18 @@
 	<title><?= $this->title; ?></title>
 	<meta name="description" content="<?= $this->description; ?>" />
 	<meta name="keywords" content="<?= $this->keywords; ?>" />
+	<meta name="yandex-verification" content="b6a74e559b4d8782" />
 
 	<?php
+
+	if(Yii::app()->language == "en")
+	{
+		$form_action = "/";
+	}
+	else {
+		$form_action = "/" . Yii::app()->language;
+	}
+
 	$cs = Yii::app()->getClientScript();
 	$cs->registerCssFile('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800&display=swap&subset=cyrillic-ext');
 	$cs->registerCssFile('https://fonts.googleapis.com/css?family=Vollkorn:400,600,700,900&dis play=swap&subset=cyrillic-ext');
@@ -27,7 +37,11 @@
 	$cs->registerScriptFile($this->mainAssets . '/js/store.js', CClientScript::POS_END);
 	$cs->registerScriptFile($this->mainAssets . '/js/bootstrap-notify.js', CClientScript::POS_END);
 	$cs->registerScriptFile($this->mainAssets . '/js/myjs.js', CClientScript::POS_END);
+	
+	
 	?>
+
+	
 	<script type="text/javascript">
 		var yupeTokenName = '<?= Yii::app()->getRequest()->csrfTokenName; ?>';
 		var yupeToken = '<?= Yii::app()->getRequest()->getCsrfToken(); ?>';
@@ -39,6 +53,7 @@
 </head>
 
 <body>
+	
 	<section class="modal modalWindow" id="popupOne">
 		<div class="align-middle">
 			<div class="container">
@@ -143,14 +158,13 @@
 	<footer>
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-3">
+				<div class="col-sm-4">
 					<div class="footer-logo-text">
 						<img src="<?= $this->mainAssets . '/images/logo.png' ?>" alt="">
 
 						<p><?= Yii::t('default', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,'); ?></p>
 					</div>
 				</div>
-				<div class="col-sm-1"></div>
 				<div class="col-sm-3 contact-info">
 					<h2>
 						<?= Yii::t('default', 'Our contacts'); ?>
@@ -193,15 +207,15 @@
 
 					</div>
 					<div class="col-sm-4 footer-contact">
-						<form action="/" method="post">
+						<form action="<?=$form_action?>" method="post">
 
 							<input type="hidden" value="<?= Yii::app()->getRequest()->getCsrfToken(); ?>" name="OQILACMS_TOKEN">
 
-							<h3 class="text-uppercase footer-contact-header"><?= Yii::t('default', 'Contact Form'); ?></h3>
+							<h3 class="text-uppercase footer-contact-header"><?= Yii::t('default', 'Send message'); ?></h3>
 
 							<div class="col-sm-6">
 								<div class="contact-form-name">
-									<div class="form-group"><label class="control-label" for="Contact_name"> <?= Yii::t('default', 'Name'); ?> </label><input required class="form-control" placeholder="Name" name="name" id="Contact_name" type="text">
+									<div class="form-group"><label class="control-label" for="Contact_name"> <?= Yii::t('default', 'Name'); ?> </label><input required class="form-control" placeholder="<?= Yii::t('default', 'Name'); ?>" name="name" id="Contact_name" type="text">
 										<div class="help-block error" id="Contact_name_em_" style="display:none"></div>
 									</div>
 								</div>
@@ -209,7 +223,7 @@
 
 							<div class="col-sm-6">
 								<div class="contact-form-phone">
-									<div class="form-group"><label class="control-label" for="Contact_phone"><?= Yii::t('default', 'Phone'); ?> </label><input required class="form-control" placeholder="Phone" name="phone" id="Contact_phone" type="text">
+									<div class="form-group"><label class="control-label" for="Contact_phone"><?= Yii::t('default', 'Phone'); ?> </label><input required class="form-control" placeholder="<?= Yii::t('default', 'Phone'); ?>" name="phone" id="Contact_phone" type="text">
 										<div class="help-block error" id="Contact_phone_em_" style="display:none"></div>
 									</div>
 								</div>
@@ -217,7 +231,7 @@
 							<div class="col-sm-12">
 
 								<div class="contact-form-message">
-									<div class="form-group"><label class="control-label" for="Contact_message"><?= Yii::t('default', 'Message'); ?></label><textarea required class="form-control" placeholder="Message" name="message" id="Contact_message"></textarea>
+									<div class="form-group"><label class="control-label" for="Contact_message"><?= Yii::t('default', 'Message'); ?></label><textarea required class="form-control" placeholder="<?= Yii::t('default', 'Message'); ?>" name="message" id="Contact_message"></textarea>
 										<div class="help-block error" id="Contact_message_em_" style="display:none"></div>
 									</div>
 								</div>
@@ -237,6 +251,7 @@
 		</div>
 	</footer>
 	<div class='notifications top-right' id="notifications">
+	<?php $this->widget('\yupe\widgets\YFlashMessages');?>
 	</div>
 </body>
 

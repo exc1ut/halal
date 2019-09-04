@@ -28,7 +28,7 @@ $this->breadcrumbs = [
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-12 text-center">
-							<h2 class="highlight text-uppercase"><?=Yii::t('default','About us')?></h2>
+							<h2 class="highlight text-uppercase"><?=Yii::t('default','Cart')?></h2>
 						</div>
 					</div>
 				</div>
@@ -144,26 +144,12 @@ $this->breadcrumbs = [
                                     </strong>
                                 </td>
                                 <td class="col-sm-1 text-right">
-                                    <a href="#" class="remove fontsize_20 cart-delete-product" title="Remove this item">
+                                    <a href="#" class="remove fontsize_20 cart-delete-product" data-position-id="<?=$positionId ?>" title="Remove this item">
                                         <i class="fa fa-trash-o"></i>
                                     </a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
-                        <tr>
-                            <td>  </td>
-                            <td colspan="2">
-                                <h5><?= Yii::t("CartModule.cart", "Subtotal"); ?></h5>
-                            </td>
-                            <td colspan="2" style="text-align: right;">
-                                <h4>
-                                    <strong id="cart-full-cost">
-                                        <?= round(Yii::app()->cart->getCost(),2); ?>
-                                    </strong>
-                                    <?= Yii::t("CartModule.cart", Yii::app()->getModule('store')->currency); ?>
-                                </h4>
-                            </td>
-                        </tr>
                         <tr>
                             <td>  </td>
                             <td colspan="2">
@@ -177,7 +163,7 @@ $this->breadcrumbs = [
                             <td colspan="5" style="text-align: right;">
 
                                 <a href="/order" class="theme_button color1">
-                                    <?= Yii::t("CartModule.cart", "Create order and proceed to payment"); ?>
+                                    <?= Yii::t("CartModule.cart", "Create order"); ?>
                                     <span class="glyphicon glyphicon-play"></span>
                                     </a>
                             </td>

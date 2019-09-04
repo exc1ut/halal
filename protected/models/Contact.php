@@ -15,10 +15,19 @@ class Contact extends YFormModel
         return [
             ['phone, subject, address, email, name, message', 'filter', 'filter' => 'trim'],
             ['phone, subject, address, email, name, message', 'filter', 'filter' => [new CHtmlPurifier(), 'purify']],
-            ['phone, subject, address, email, name, message', 'required','on' => 'contact'],
+            ['subject, email, name, message', 'required','on' => 'contact','message' => '{attribute} ' . Yii::t('default', 'cannot be blank')],
             ['phone, name, message', 'required','on' => 'index'],
             ['message', 'length', 'max' => 250],
-            ['email', 'email'],
+        ];
+    }
+    public function attributeLabels()
+    {
+        return [
+            'phone' => Yii::t('default','Phone'),
+            'subject' => Yii::t('default','Subject'),
+            'email' => Yii::t('default','Email'),
+            'message' => Yii::t('default','Message'),
+            'name' => Yii::t('default','Name'),
         ];
     }
 

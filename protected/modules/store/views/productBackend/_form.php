@@ -5,6 +5,23 @@
  * @var $form \yupe\widgets\ActiveForm
  * @var ImageGroup $imageGroup
  */
+
+ $lang_list = $this->yupe->getLanguagesList();
+ $sorted_lang = [];
+ 
+
+ foreach($lang_list as $key => $lang)
+ {
+    if($key == "kr")
+    {
+        $sorted_lang[$key] = Yii::t('default',"korean");
+    }
+    else 
+    {
+        $sorted_lang[$key] = $lang;
+    }
+ }
+ 
 ?>
 <?php Yii::app()->getClientScript()->registerCssFile($this->getModule()->getAssetsUrl().'/css/store-backend.css'); ?>
 
@@ -122,7 +139,7 @@ $form = $this->beginWidget(
                 'lang',
                 [
                     'widgetOptions' => [
-                        'data' => $this->yupe->getLanguagesList(),
+                        'data' => $sorted_lang,
                     ],
                 ]
             ); ?>

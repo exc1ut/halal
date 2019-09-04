@@ -1,5 +1,5 @@
 $(document).ajaxError(function () {
-    $('#notifications').notify({message: {text: 'Произошла ошибка =('}, 'type': 'danger'}).show();
+    $('#notifications').notify({ message: { text: 'Произошла ошибка =(' }, 'type': 'danger' }).show();
 });
 
 $(document).ready(function () {
@@ -9,7 +9,7 @@ $(document).ready(function () {
     var priceElement = $('#result-price'); //итоговая цена на странице продукта
     var discountElement = $('#discount-price'); //итоговая цена на странице продукта
     var basePrice = parseFloat($('#base-price').val()); //базовая цена на странице продукта
-    var discount = parseFloat($('#discount').val()); 
+    var discount = parseFloat($('#discount').val());
     var quantityElement = $('#product-quantity');
     var form = $('#product-form');
     /*корзина*/
@@ -31,7 +31,7 @@ $(document).ready(function () {
 
     // $(".js-select2").select2();
 
-    $(form).on("change", function(event){
+    $(form).on("change", function (event) {
         if (event.target.getAttribute("name") === "ProductVariant[]") {
             var id = event.target.value;
             var hasBasePriceVariant = false;
@@ -39,34 +39,35 @@ $(document).ready(function () {
             if (id) {
                 var button = document.getElementById("add-product-to-cart");
                 $.ajax({
-                url: productVariantUrl,
-                method: "post",
-                data: $(this).serialize(),
-                success: function (data) {
-                    if (data.success == true) {
-                        $(button).removeAttr("disabled");
-                        // еще не было варианта
-                        if (!hasBasePriceVariant) {
-                            _basePrice = data.amount;
-                            hasBasePriceVariant = true;
-                        }
-                        else {
-                            if (_basePrice < data.amount) {
+                    url: productVariantUrl,
+                    method: "post",
+                    data: $(this).serialize(),
+                    success: function (data) {
+                        if (data.success == true) {
+                            $(button).removeAttr("disabled");
+                            // еще не было варианта
+                            if (!hasBasePriceVariant) {
                                 _basePrice = data.amount;
+                                hasBasePriceVariant = true;
                             }
-                        }
-                        var price = parseFloat(_basePrice).format()  + ' сум';
-                        priceElement.html(price);
+                            else {
+                                if (_basePrice < data.amount) {
+                                    _basePrice = data.amount;
+                                }
+                            }
+                            var price = parseFloat(_basePrice).format() + ' сум';
+                            priceElement.html(price);
 
-                        if (discount > 0) {
-                            var d_price = ((_basePrice * 100) / (100-discount)); 
-                            discountElement.html(d_price.format() + ' сум');
+                            if (discount > 0) {
+                                var d_price = ((_basePrice * 100) / (100 - discount));
+                                discountElement.html(d_price.format() + ' сум');
+                            }
+                        } else {
+                            $(button).attr("disabled", "disabled");
+                            showNotify(button, data.result ? 'success' : 'danger', data.data);
                         }
-                    } else {
-                        $(button).attr("disabled", "disabled");
-                        showNotify(button, data.result ? 'success' : 'danger', data.data);
                     }
-                }});
+                });
             }
         }
     });
@@ -100,7 +101,7 @@ $(document).ready(function () {
         var code = $('#coupon-code').val();
         var button = $(this);
         if (code) {
-            var data = {'code': code};
+            var data = { 'code': code };
             data[yupeTokenName] = yupeToken;
             $.ajax({
                 url: '/coupon/add',
@@ -121,7 +122,7 @@ $(document).ready(function () {
     $('.coupon .close').click(function (e) {
         e.preventDefault();
         var code = $(this).siblings('input[type="hidden"]').data('code');
-        var data = {'code': code};
+        var data = { 'code': code };
         var el = $(this).closest('.coupon');
         data[yupeTokenName] = yupeToken;
         $.ajax({
@@ -158,7 +159,7 @@ $(document).ready(function () {
     });
 
     $('.product-quantity-increase').on('click', function () {
-        var quantity =  parseInt(quantityElement.val()) + 1;
+        var quantity = parseInt(quantityElement.val()) + 1;
         quantityElement.val(quantity);
         $('#product-quantity-input').val(quantity);
         $('#product-total-price').text(Math.round((parseFloat($('#result-price').text()) * quantity)));
@@ -189,9 +190,9 @@ $(document).ready(function () {
 
     $('.add-product-to-cart').click(function (e) {
         e.preventDefault();
-	//if (validateVariants(e.target) !== true) {
-	//	return false;
-	//}
+        //if (validateVariants(e.target) !== true) {
+        //	return false;
+        //}
         var button = $(this);
         button.button('Добавление');
         var form = $(this).parents('form');
@@ -235,7 +236,7 @@ $(document).ready(function () {
     $('body').on('click', '.quick-add-product-to-cart', function (e) {
         e.preventDefault();
         var el = $(this);
-        var data = {'Product[id]': el.data('product-id')};
+        var data = { 'Product[id]': el.data('product-id') };
         data[yupeTokenName] = yupeToken;
         $.ajax({
             url: el.data('cart-add-url'),
@@ -249,7 +250,7 @@ $(document).ready(function () {
                     el.removeClass('btn_cart')
                         // .addClass('btn_success')
                         .html('<h6>Добавлено</h6><i class="flaticon-3-signs" aria-hidden="true"></i>')
-                        // .attr('href', '/cart');
+                    // .attr('href', '/cart');
                 }
                 showNotify(el, data.result ? 'success' : 'danger', data.data);
             }
@@ -273,7 +274,7 @@ $(document).ready(function () {
     $('.cart-delete-product').click(function (e) {
         e.preventDefault();
         var el = $(this);
-        var data = {'id': el.data('position-id')};
+        var data = { 'id': el.data('position-id') };
         data[yupeTokenName] = yupeToken;
         $.ajax({
             url: yupeCartDeleteProductUrl,
@@ -309,18 +310,21 @@ $(document).ready(function () {
     $('input[name="Order[delivery_id]"]').change(function () {
         updateShippingCost();
     });
-    
+
     function showNotify(element, result, message) {
         if ($.isFunction($.fn.notify)) {
-            $("#notifications").notify({message: {text: message}, 'type': result}).show();
+            $("#notifications").html(message)
         }
     }
+    $(".close").click(function() {
+        $(".alert").innerText = "";
+    })
 
     function miniCartListeners() {
         $('.mini-cart-delete-product').click(function (e) {
             e.preventDefault();
             var el = $(this);
-            var data = {'id': el.data('position-id')};
+            var data = { 'id': el.data('position-id') };
             data[yupeTokenName] = yupeToken;
             $.ajax({
                 url: yupeCartDeleteProductUrl,
@@ -433,57 +437,57 @@ $(document).ready(function () {
         /* выбираем вариант, меняющий базовую цену максимально*/
         var hasBasePriceVariant = false;
         // $.each(data, function (index, elem) {
-            var varId = $(data).data('value');
-            if (varId) {
-                var variant = {amount: $(data).data('amount'), type: $(data).data('type')};
-                switch (variant.type) {
-                    case 2: // base price
-                        // еще не было варианта
-                        if (!hasBasePriceVariant) {
+        var varId = $(data).data('value');
+        if (varId) {
+            var variant = { amount: $(data).data('amount'), type: $(data).data('type') };
+            switch (variant.type) {
+                case 2: // base price
+                    // еще не было варианта
+                    if (!hasBasePriceVariant) {
+                        _basePrice = variant.amount;
+                        hasBasePriceVariant = true;
+                    }
+                    else {
+                        if (_basePrice < variant.amount) {
                             _basePrice = variant.amount;
-                            hasBasePriceVariant = true;
                         }
-                        else {
-                            if (_basePrice < variant.amount) {
-                                _basePrice = variant.amount;
-                            }
-                        }
-                        
-                        var att_id = $(data).data('attribute_id');
-                        var old_variant = $('#variant_id');
-                        if (old_variant) {old_variant.remove();}
-                        $('#product-form').append('<input id="variant_id" type="hidden" name="ProductVariant[]" value="'+att_id+'">');
-                        break;
-                }
+                    }
+
+                    var att_id = $(data).data('attribute_id');
+                    var old_variant = $('#variant_id');
+                    if (old_variant) { old_variant.remove(); }
+                    $('#product-form').append('<input id="variant_id" type="hidden" name="ProductVariant[]" value="' + att_id + '">');
+                    break;
             }
+        }
         // });
         var newPrice = _basePrice;
         // $.each(data, function (index, elem) {
-            var varId = $(data).data('value');
-            if (varId) {
-                var variant = {amount: $(data).data('amount'), type: $(data).data('type')};
-                variants.push(variant);
-                switch (variant.type) {
-                    case 0: // sum
-                        newPrice += variant.amount;
-                        _basePrice = newPrice;
+        var varId = $(data).data('value');
+        if (varId) {
+            var variant = { amount: $(data).data('amount'), type: $(data).data('type') };
+            variants.push(variant);
+            switch (variant.type) {
+                case 0: // sum
+                    newPrice += variant.amount;
+                    _basePrice = newPrice;
 
-                        var att_id = $(data).data('attribute_id');
-                        var old_variant = $('#variant_id');
-                        if (old_variant) {old_variant.remove();}
-                        $('#product-form').append('<input id="variant_id" type="hidden" name="ProductVariant[]" value="'+att_id+'">');
-                        break;
-                    case 1: // percent
-                        newPrice += _basePrice * ( variant.amount / 100);
-                        _basePrice = newPrice;
+                    var att_id = $(data).data('attribute_id');
+                    var old_variant = $('#variant_id');
+                    if (old_variant) { old_variant.remove(); }
+                    $('#product-form').append('<input id="variant_id" type="hidden" name="ProductVariant[]" value="' + att_id + '">');
+                    break;
+                case 1: // percent
+                    newPrice += _basePrice * (variant.amount / 100);
+                    _basePrice = newPrice;
 
-                        var att_id = $(data).data('attribute_id');
-                        var old_variant = $('#variant_id');
-                        if (old_variant) {old_variant.remove();}
-                        $('#product-form').append('<input id="variant_id" type="hidden" name="ProductVariant[]" value="'+att_id+'">');
-                        break;
-                }
+                    var att_id = $(data).data('attribute_id');
+                    var old_variant = $('#variant_id');
+                    if (old_variant) { old_variant.remove(); }
+                    $('#product-form').append('<input id="variant_id" type="hidden" name="ProductVariant[]" value="' + att_id + '">');
+                    break;
             }
+        }
         // });
 
         var price = newPrice.format() + ' сум';
@@ -491,7 +495,7 @@ $(document).ready(function () {
         $('#product-result-price').text(price);
         $('#product-total-price').text(price * parseInt($('#product-quantity').text()));
 
-        
+
     }
 
     function updateCartWidget() {
@@ -524,7 +528,7 @@ $(document).ready(function () {
     }
 
     function changePositionQuantity(productId, quantity) {
-        var data = {'quantity': quantity, 'id': productId};
+        var data = { 'quantity': quantity, 'id': productId };
         data[yupeTokenName] = yupeToken;
         $.ajax({
             url: yupeCartUpdateUrl,
@@ -540,7 +544,7 @@ $(document).ready(function () {
     }
 });
 
-Number.prototype.format = function(n, x) {
+Number.prototype.format = function (n, x) {
     var re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\.' : '$') + ')';
     return this.toFixed(Math.max(0, ~~n)).replace(new RegExp(re, 'g'), '$&,');
 };

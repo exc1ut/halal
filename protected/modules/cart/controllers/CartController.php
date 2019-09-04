@@ -73,7 +73,7 @@ class CartController extends \yupe\components\controllers\FrontController
         $model->selectedVariants = $variants;
         $quantity = empty($product['quantity']) ? 1 : (int)$product['quantity'];
         Yii::app()->cart->put($model, $quantity);
-        Yii::app()->ajax->success(Yii::t("CartModule.cart", 'Product successfully added to your basket'));
+        Yii::app()->ajax->success(Yii::t("CartModule.cart", '<div id="yw1"><div class="alert in fade alert-success"><a href="#" class="close" data-dismiss="alert">×</a>  PRODUCT SUCCESSFULLY ADDED TO YOUR BASKET. TO MAKE YOUR ORDER GO TO <a href="/cart">THE BASKET </a></div></div>'));
     }
 
     /**
@@ -96,6 +96,7 @@ class CartController extends \yupe\components\controllers\FrontController
      */
     public function actionDelete()
     {
+        
         if (!Yii::app()->getRequest()->getIsPostRequest() || !Yii::app()->getRequest()->getPost('id')) {
             throw new CHttpException(404);
         }

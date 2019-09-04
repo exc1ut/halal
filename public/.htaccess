@@ -2,6 +2,16 @@ AddDefaultCharset utf-8
 <IfModule mod_rewrite.c>
     RewriteEngine on
     
+
+     RewriteCond %{HTTP_HOST} ^halalbaraka.co.kr$ [OR]
+     RewriteCond %{HTTP_HOST} ^www.halalbaraka.co.kr$
+     RewriteRule (.*)$ http://halalbaraka.com/$1 [R=301,L]
+
+     RewriteCond %{HTTP_HOST} ^halalbaraka.kr$ [OR]
+     RewriteCond %{HTTP_HOST} ^www.halalbaraka.kr$
+     RewriteRule (.*)$ http://halalbaraka.com/$1 [R=301,L]
+
+
     # Redirect from http://www to http://
     RewriteCond %{HTTPS} !=on
     RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]

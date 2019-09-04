@@ -23,10 +23,12 @@ class SiteController extends FrontController
      */
     public function actionIndex()
     {
+        
         \Yii::import('application.models.Contact');
         $model = new \Contact('index');
         $data = $_POST;
         if (!empty($data)) {
+            
             $model->setAttributes($data);
             if ($model->validate()) {
                 $email = new \PHPMailer();
@@ -49,10 +51,15 @@ class SiteController extends FrontController
                 Address: {$model->address};
                 Message: {$model->message};
 TEST;
-                $email->AddAddress('umid19999@gmail.com');
+                $email->AddAddress('info@halalbaraka.com');
                 $email->TimeOut = 5;
                 $email->CharSet = 'UTF-8';
+                
                 $email->Send();
+                \Yii::app()->user->setFlash(
+                    \yupe\widgets\YFlashMessages::SUCCESS_MESSAGE,
+                    \Yii::t('default', 'Thank you for sending a message! We will contact you as soon as possible.')
+                );
             }
         }
 
@@ -93,12 +100,19 @@ TEST;
                 Address: {$model->address};
                 Message: {$model->message};
 TEST;
-                $email->AddAddress('umid19999@gmail.com');
+                $email->AddAddress('info@halalbaraka.com');
                 $email->TimeOut = 5;
                 $email->CharSet = 'UTF-8';
                 $email->Send();
+                
+                \Yii::app()->user->setFlash(
+                    \yupe\widgets\YFlashMessages::SUCCESS_MESSAGE,
+                    \Yii::t('default', 'The message was sent!')
+                );
+                
             }
         }
+
         $this->render('contact', [
             'model' => $model
         ]);
@@ -110,17 +124,18 @@ TEST;
         $model = new \Order();
         $data = \Yii::app()->request->getPost('Order');
         $positions = \Yii::app()->cart->getPositions();
-        
+        $header = '<p>'.\Yii::t('default','Please fix the following input errors:').'</p>';
         foreach($positions as $position)
         {
             $text .=  "Name : {$position->name}". "\n";
         }
 
         if (!empty($data)) {
+            
             $model->setAttributes($data);
             if ($model->validate()) {
                 $email = new \PHPMailer();
-                $email->SMTPDebug = 0;
+                $email->SMTPDebug = 2;
                 $email->isSMTP();
                 $email->Host = 'smtp.yandex.ru';
                 $email->SMTPAutoTLS = true;
@@ -141,10 +156,21 @@ TEST;
                 Surname: {$model->surname};
                 Name: {$text};
 TEST;
-                $email->AddAddress('umid19999@gmail.com');
+                $email->AddAddress('info@halalbaraka.com');
                 $email->TimeOut = 5;
                 $email->CharSet = 'UTF-8';
+                
                 $email->Send();
+                \Yii::app()->user->setFlash(
+                    \yupe\widgets\YFlashMessages::SUCCESS_MESSAGE,
+                    \Yii::t('default', 'The message was sent!')
+                );
+            } else {
+                
+                \Yii::app()->user->setFlash(
+                    'error',
+                    \CHtml::errorSummary($model,$header)
+                );
             }
         }
         $this->render('order',[
